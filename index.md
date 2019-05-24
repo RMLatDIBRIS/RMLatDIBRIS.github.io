@@ -2,6 +2,12 @@
 layout: default
 title: Runtime Monitoring Language 
 ---
+
+# Welcome to the Runtime Monitoring Language!
+
+The Web site is under construction.
+
+<!--
 <!doctype html>
 <html>
   <head>
@@ -13,6 +19,6 @@ title: Runtime Monitoring Language
     The Web site is under construction.
   </body>
 </html>
-
+-->
 
 
