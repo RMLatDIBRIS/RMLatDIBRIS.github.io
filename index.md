@@ -6,18 +6,4 @@ layout: default
 
 The Web site is under construction.
 
-<!--
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>RML Home</title>
-  </head>
-  <body>
-    <h1>Welcome to the Runtime Monitoring Language!</h1>
-    The Web site is under construction.
-  </body>
-</html>
--->
-
 
