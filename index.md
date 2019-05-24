@@ -1,6 +1,5 @@
 ---
 layout: default
-title: Runtime Monitoring Language 
 ---
 
 # Welcome to the Runtime Monitoring Language!
