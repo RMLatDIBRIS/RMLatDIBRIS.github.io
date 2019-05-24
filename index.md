@@ -1,5 +1,6 @@
 ---
 layout: default
+title: RML home
 ---
 
 # Welcome to the Runtime Monitoring Language!
