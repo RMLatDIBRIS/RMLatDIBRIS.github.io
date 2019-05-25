@@ -7,7 +7,7 @@ show_downloads: false
 
 * * *
 
-![Logo](logo.png)
+![Logo](logoBW.png)
 
 ## The Web site is under construction.
 
