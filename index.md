@@ -53,3 +53,21 @@ specify the following events, respectively:
 - function `dequeue` has been called with no arguments, and returned value `val`.
 
 
+### Event types
+Event types define  sets of events and coincide with what is often referred as symbolic events in **RV**.
+In **RML**  event types are terms built on top of names with arities, and subterms representing data values of primitive, array, or object type;
+event types are defined by pattern matching as in the following example:
+```js
+enq(val) matches {event:'func_pre',name:'enqueue',args:[val]};
+deq(val) matches  {event:'func_post',name:'dequeue',res:val};
+enq matches enq(_);
+deq matches deq(_);
+```  
+Four event types are defined: `enq` and `deq` with arity 0 and 1; event types can be overloaded: the same name can be
+used with event types with different arities.
+
+The meaning of the definition above is as follows:
+- `enq(val)` matches all calls to function `enqueue` with argument `val`;
+- `enq` matches all events matching `enq(val)` for any `val`;
+- `deq(val)` matches all returns from function `dequeue` with result `val`
+- `deq` matches all events matching `deq(val)` for any `val`.
