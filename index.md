@@ -64,7 +64,7 @@ enq matches enq(_);
 deq matches deq(_);
 ```  
 Four event types are defined: `enq` and `deq` with arity 0 and 1; event types can be overloaded: the same name can be
-used with event types with different arities.
+used for event types with different arities.
 
 The meaning of the definition above is as follows:
 - `enq(val)` matches all calls to function `enqueue` with argument `val`;
