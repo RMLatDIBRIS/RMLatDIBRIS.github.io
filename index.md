@@ -15,7 +15,8 @@ which decouples monitoring from instrumentation by allowing users to write speci
 to synthesize monitors from them, independently of the Sytem Under Scrutiny and its instrumentation. 
 
 **RML** is more expressive than Context-Free grammars, for instance the following specification allows
-monitoring of FIFO properties
+monitoring of FIFO properties:
+
 ```
 // FIFO queues
 
