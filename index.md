@@ -45,6 +45,7 @@ As an example, the following objects
 
 ```js
 {event:'func_pre',name:'enqueue',args:[val]}
+
 {event:'func_post',name:'dequeue',args:[],res:val}
 ```
 specify the following events, respectively:
