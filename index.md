@@ -38,8 +38,8 @@ following properties keys:
 - `event`, specifying two possible kinds of events: 'func_pre' and 'func_post', corresponding,
 respectively to *function calls* and *returns from functions*;
 -  `name`, specifying the name of the corresponding function;
--  `args`, specifying an array corresponding to the arguments passed to the function;
--  `res`, specifying the returned value, if `event` is  'func_post'.
+-  `args`, specifying the array of the arguments passed to the function;
+-  `res`, specifying the returned value, if `event` is associated with 'func_post'.
 
 As an example, the following objects
 
@@ -47,7 +47,7 @@ As an example, the following objects
 {event:'func_pre',name:'enqueue',args:[val]}
 {event:'func_post',name:'dequeue',args:[],res:val}
 ```
-specify the following events:
+specify the following events, respectively:
 - function `enqueue` has been called with argument `val`;
 - function `dequeue` has been called with no arguments, and returned value `val`.
 
