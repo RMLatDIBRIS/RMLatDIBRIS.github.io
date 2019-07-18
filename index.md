@@ -71,3 +71,12 @@ The meaning of the definition above is as follows:
 - `enq` matches all events matching `enq(val)` for any `val`;
 - `deq(val)` matches all returns from function `dequeue` with result `val`
 - `deq` matches all events matching `deq(val)` for any `val`.
+
+Event types support modularity, reuse, and readability of specifications.
+For instance, the specification of queues above can be easily adapted if one has to verify a library where the operations for enqueueing and dequeing
+are `add` and `remove`, respectively, by only changing the definitions of `enq(val)` and `deq(val)`:
+
+```js
+enq(val) matches {event:'func_pre',name:'add',args:[val]};
+deq(val) matches  {event:'func_post',name:'remove',res:val};
+```  
