@@ -11,3 +11,5 @@ show_downloads: false
 
 ## [A brief introduction](rml.md)
 
+## [Downloads](downloads.md)
+
