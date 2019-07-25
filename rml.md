@@ -113,3 +113,9 @@ respectively, then the two properties above can be specified as follows:
 
 (nad* (alloc nad* dealloc)?)* // property 2
 ```
+Now what we can do if we need to specify traces that verify both properties 1 and 2? The intersection operator
+comes to our aid, by allowing us to combine the two properties above in a compositional way to get the desired
+specification:
+```js
+(noc* (open noc* close)?)*  /\  (nad* (alloc nad* dealloc)?)* // both property 1 and 2
+```
