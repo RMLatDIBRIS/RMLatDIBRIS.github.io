@@ -108,7 +108,7 @@ events matching `open` are allowed in between;
 2. for any event matching `alloc` there must be a subsequent event matching `dealloc` and no other
 events matching `alloc` are allowed in between.
 
-If `noc` (for `not open and close') and `nad` (for `not alloc and dealloc') are event types defining all events not matching `open` and `close`, and `alloc` and `dealloc`,
+If `noc` (for 'not open and close') and `nad` (for 'not alloc and dealloc') are event types defining all events not matching `open` and `close`, and `alloc` and `dealloc`,
 respectively, then the two properties above can be specified as follows:
 
 ```js
@@ -116,7 +116,7 @@ respectively, then the two properties above can be specified as follows:
 
 (nad* (alloc nad* dealloc)?)* // property 2
 ```
-Now, what can we do if we need to specify traces that verify both properties 1 and 2? The intersection operator
+Now, what can we do if we need to specify traces that have to verify both properties 1 and 2? The intersection operator
 comes to our aid, by allowing us to combine the two properties above in a compositional way to get the desired
 specification:
 ```js
