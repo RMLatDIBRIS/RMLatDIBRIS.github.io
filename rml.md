@@ -16,7 +16,7 @@ monitoring of **FIFO** properties:
 // FIFO queues
 
 enq(val) matches {event:'func_pre',name:'enqueue',args:[val]};
-deq(val) matches  {event:'func_post',name:'dequeue',res:val};
+deq(val) matches {event:'func_post',name:'dequeue',res:val};
 deq matches deq(_);
 
 Main = {let val; enq(val) ((deq | Main) /\ (deq >> deq(val) all))}!;
@@ -54,7 +54,7 @@ In **RML**  event types are terms built on top of names with arities, and subter
 event types are defined by pattern matching as in the following example:
 ```js
 enq(val) matches {event:'func_pre',name:'enqueue',args:[val]};
-deq(val) matches  {event:'func_post',name:'dequeue',res:val};
+deq(val) matches {event:'func_post',name:'dequeue',res:val};
 enq matches enq(_);
 deq matches deq(_);
 ```  
@@ -73,5 +73,5 @@ are `add` and `remove`, respectively, by only changing the definitions of `enq(v
 
 ```js
 enq(val) matches {event:'func_pre',name:'add',args:[val]};
-deq(val) matches  {event:'func_post',name:'remove',res:val};
+deq(val) matches {event:'func_post',name:'remove',res:val};
 ```  
