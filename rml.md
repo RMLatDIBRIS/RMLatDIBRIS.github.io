@@ -1,9 +1,9 @@
 ---
 layout: default
-title: A bried introduction to RML
+title: A brief introduction to RML
 show_downloads: false
 ---
-# A bried introduction to RML
+# A brief introduction to RML
 
 **RML** is a rewriting-based and system agnostic **Domain Specific Language** for **Runtime Verification**,
 which decouples monitoring from instrumentation by allowing users to write specifications and
