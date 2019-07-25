@@ -80,12 +80,10 @@ deq(val) matches {event:'func_post',name:'remove',res:val};
 An **RML** specification denotes a set of event traces, obtained by combining simpler sets with the following basic binary operators (in
 decreasing order of precedence):
 - concatenation (juxtaposition), to force sequentiality; for instance, in event traces specified by
-
 ```js
 enq(42) deq(42)
 ```
-events of type `deq(42)` must always follow events of type `enq(42)`
-
+events of type `deq(42)` must always follow events of type `enq(42)`.
 - intersection (`/\`), to ensure that event traces satisfy simultaneously different properties 
 - union (`\/`), to express alternatives
 - shuffle (`|`), to allow  
