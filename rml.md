@@ -3,7 +3,7 @@ layout: default
 title: A brief introduction to RML
 show_downloads: false
 ---
-# A brief introduction to RML
+# A brief introduction to **RML**
 
 **RML** is a rewriting-based and system agnostic **Domain Specific Language** for **Runtime Verification**,
 which decouples monitoring from instrumentation by allowing users to write specifications and
@@ -96,6 +96,7 @@ while `(exp)*` and `(exp)+` correspond to the following specifications `Star` an
 Star = empty \/ (exp) Star  // exp*
 Plus = (exp) Star  // exp+
 ```
+### More on intersection and shuffle
 Before introducing other more advanced derived operators, let us focus on the two basic intersection and
 shuffle operators; indeed, while we are all familiar with concatenation and union, which are both used in
 regular expressions and context-free grammars, these latter operators deserve more attention to
