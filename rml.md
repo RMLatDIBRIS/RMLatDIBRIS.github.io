@@ -96,10 +96,20 @@ while `(exp)*` and `(exp)+` correspond to the following specifications `Star` an
 Star = empty \/ (exp) Star  // exp*
 Plus = (exp) Star  // exp+
 ```
-<!--
-for instance, in event traces specified by
+Before introducing other more advanced derived operators, let us focus on the two basic intersection and
+shuffle operators; indeed, while we are all familiar with concatenation and union, which are both used in
+regular expressions and context-free grammars, these latter operators deserve more attention to
+understand why they are useful in RV.
+
+For the intersection, let us consider the following two simple properties on event traces:
+1. for any event matching `open` there must be a subsequent event matching `close` and no other
+events matching `open` are allowed in between;
+2. for any event matching `alloc` there must be a subsequent event matching `dealloc` and no other
+events matching `alloc` are allowed in between.
+If `noc` and `nad` are event types matching all events not matching `open` and `close`, and `alloc` and `dealloc`,
+respectively, then the two properties above can be specified as follows:
 ```js
-enq(42) deq(42)
+(noc* (open noc* close)?)*    // property 1
+
+(nad* (alloc nad* dealloc)?)* // property 2
 ```
-events of type `deq(42)` must always follow events of type `enq(42)`.
--->
