@@ -76,16 +76,30 @@ enq(val) matches {event:'func_pre',name:'add',args:[val]};
 deq(val) matches {event:'func_post',name:'remove',res:val};
 ```  
 
-## Basic operators and determinism
+## Basic operators and derived operators
 An **RML** specification denotes a set of event traces, obtained by combining simpler sets with the following basic binary operators (in
 decreasing order of precedence):
-- concatenation (juxtaposition), to force sequentiality; for instance, in event traces specified by
+- concatenation (juxtaposition), to force sequentiality; 
+- intersection (`/\`), to ensure that event traces satisfy simultaneously different properties;  
+- union (`\/`), to express alternatives;
+- shuffle (`|`), to allow interleaving of events in traces. 
+
+Specifications can be (mutually) recursive, and the keyword `empty` is the basic constant operator
+denoting the set containing just the empty trace.
+
+Thanks to recursion and the basic operators above, several derived operators can be defined.
+
+Standard postfix operators `?`, `+` and `*` are borrowed from regular expressions: 
+for any expression `exp`, `(exp)?` is equivalent to `empty \/ (exp)`,
+while `(exp)*` and `(exp)+` correspond to the following specifications:
+```js
+Star = empty \/ ($\exp$) Star // ($\exp$)*
+Plus = ($\exp$) Star // ($\exp$)+
+```
+<!--
+for instance, in event traces specified by
 ```js
 enq(42) deq(42)
 ```
 events of type `deq(42)` must always follow events of type `enq(42)`.
-- intersection (`/\`), to ensure that event traces satisfy simultaneously different properties 
-- union (`\/`), to express alternatives
-- shuffle (`|`), to allow  
-
-Specifications can be (mutually) recursive, and the keyword `empty` denotes the set containing just the empty trace.
+-->
