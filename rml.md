@@ -93,8 +93,8 @@ Standard postfix operators `?`, `+` and `*` are borrowed from regular expression
 for any expression `exp`, `(exp)?` is equivalent to `empty \/ (exp)`,
 while `(exp)*` and `(exp)+` correspond to the following specifications `Star` and `Plus`, respectively:
 ```js
-Star = empty \/ (exp) Star 
-Plus = (exp) Star 
+Star = empty \/ (exp) Star  // exp*
+Plus = (exp) Star  // exp+
 ```
 <!--
 for instance, in event traces specified by
