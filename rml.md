@@ -91,10 +91,10 @@ Thanks to recursion and the basic operators above, several derived operators can
 
 Standard postfix operators `?`, `+` and `*` are borrowed from regular expressions: 
 for any expression `exp`, `(exp)?` is equivalent to `empty \/ (exp)`,
-while `(exp)*` and `(exp)+` correspond to the following specifications:
+while `(exp)*` and `(exp)+` correspond to the following specifications `Star` and `Plus`, respectively:
 ```js
-Star = empty \/ ($\exp$) Star // ($\exp$)*
-Plus = ($\exp$) Star // ($\exp$)+
+Star = empty \/ (exp) Star 
+Plus = (exp) Star 
 ```
 <!--
 for instance, in event traces specified by
