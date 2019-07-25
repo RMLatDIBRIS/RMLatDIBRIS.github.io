@@ -106,8 +106,10 @@ For the intersection, let us consider the following two simple properties on eve
 events matching `open` are allowed in between;
 2. for any event matching `alloc` there must be a subsequent event matching `dealloc` and no other
 events matching `alloc` are allowed in between.
+
 If `noc` and `nad` are event types matching all events not matching `open` and `close`, and `alloc` and `dealloc`,
 respectively, then the two properties above can be specified as follows:
+
 ```js
 (noc* (open noc* close)?)*    // property 1
 
