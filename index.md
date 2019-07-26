@@ -9,7 +9,7 @@ show_downloads: false
 
 ![Logo](logoBW.png)
 
-## [A brief introduction](rml.md)
+## [An introductory guide](rml.md)
 
 ## [Downloads](downloads.md)
 
