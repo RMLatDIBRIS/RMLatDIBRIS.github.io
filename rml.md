@@ -76,7 +76,7 @@ enq(val) matches {event:'func_pre',name:'add',args:[val]};
 deq(val) matches {event:'func_post',name:'remove',res:val};
 ```  
 
-## Basic operators and derived operators
+## Basic and derived operators
 An **RML** specification denotes a set of event traces, obtained by combining simpler sets with the following basic binary operators (in
 decreasing order of precedence):
 - concatenation (juxtaposition), to force sequentiality; 
