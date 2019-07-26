@@ -141,7 +141,7 @@ by all traces, then we can combine together the specifications above with the in
 ((open close)* | noc*) /\ ((alloc dealloc)* | nad*) // property 1 and 2
 ```
 
-###Filter operator
+### Filter operator
 The derived filter operator is useful for restricting verification to events that match a certain type; for instance, the specification
 above can be written in a even more readable way by employing filter:
 
