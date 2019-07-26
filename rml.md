@@ -151,4 +151,6 @@ oc >> (open close)* /\ ad >> (alloc dealloc)* // property 1 and 2
 
 Event types `oc`and `ad` are the complement of `noc` and `nad`, respectively:
 an event matches `oc` only when it matches either `open` or `close',
-an event matches `ad` only when it matches either `alloc` or `dealloc'.
+an event matches `ad` only when it matches either `alloc` or `dealloc'. The specification
+can be read as follows: events matching `oc` have to satisfy `(open close)*`, and events matching
+`ad` have to satisfy `(alloc dealloc)*`.
