@@ -122,3 +122,19 @@ specification:
 ```js
 (noc* (open noc* close)?)*  /\  (nad* (alloc nad* dealloc)?)* // both property 1 and 2
 ```
+
+Property 1 and 2 above have been specified with standard regular expressions which, however, take some time to be parsed and
+interpreted correctly by a human. Shuffle allows us to specify such properties in a more direct way:
+
+```js
+(open close)* | noc*	   // property 1
+
+(alloc dealloc)* | nad* // property 2
+```
+Shuffle can be used to express concisely that any event trace in `(open close)*` can be interleaved with any trace in `noc*` and
+any event trace in `(alloc dealloc)*` can be interleaved with any trace in `nad*`. Again, if we need both properties to be verified
+by all traces, then we can combine the specifications together with the intersection operator:
+
+```js
+((open close)* | noc*) /\ ((alloc dealloc)* | nad*) // property 1 and 2
+```
