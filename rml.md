@@ -146,7 +146,7 @@ The derived filter operator is useful for restricting verification to events tha
 above can be written in a even more readable way by employing filter:
 
 ```js
-oc >> (open close)* /\ ad >> (alloc dealloc)* // property 1 and 2
+(oc >> (open close)*) /\ (ad >> (alloc dealloc)*) // property 1 and 2
 ```
 
 Event types `oc`and `ad` are the complement of `noc` and `nad`, respectively:
