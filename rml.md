@@ -154,3 +154,16 @@ an event matches `oc` only when it matches either `open` or `close`,
 an event matches `ad` only when it matches either `alloc` or `dealloc`. The specification
 can be read as follows: events matching `oc` have to satisfy `(open close)*`, and events matching
 `ad` have to satisfy `(alloc dealloc)*`.
+
+### Derived operators and monitor verdicts 
+
+The monitor generated from an **RML** specification emits verdicts in a 4-valued logic for any event:
+- **True**: the event trace monitored so far is correct, and any continuation will be correct as well;  
+- **Possibly true**: the event trace monitored so far is correct, but some of its continuations are not correct; 
+- **Possibly false**: the event trace monitored so far is not correct, but some of its continuations are correct;  
+- **False**: the event trace monitored so far is not correct, and any continuation will be incorrect as well.
+
+The first and last values are called *conclusive* since in those cases no other monitoring is required
+to decide whether the execution is correct or not; the others are *inconclusive* and
+require the monitor to keep running.
+
