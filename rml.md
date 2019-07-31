@@ -7,7 +7,7 @@ show_downloads: false
 
 **RML** is a rewriting-based and system agnostic **Domain Specific Language** for **Runtime Verification**,
 which decouples monitoring from instrumentation by allowing users to write specifications and
-to synthesize monitors from them, independently of the **System Under Scrutiny** and its instrumentation. 
+to synthesize monitors from them, independently of the **System Under Scrutiny** (**SUS**) and its instrumentation. 
 
 **RML** is more expressive than **Context-Free** grammars, for instance the following specification allows
 monitoring of **FIFO** properties:
@@ -157,13 +157,13 @@ can be read as follows: events matching `oc` have to satisfy `(open close)*`, an
 
 ### Derived operators and monitor verdicts 
 
-The monitor generated from an **RML** specification emits verdicts in a 4-valued logic for any event:
+Any time it gets a new event, the monitor generated from an **RML** specification emits a verdict in a 4-valued logic:
 - **True**: the event trace monitored so far is correct, and any continuation will be correct as well;  
 - **Possibly true**: the event trace monitored so far is correct, but some of its continuations are not correct; 
 - **Possibly false**: the event trace monitored so far is not correct, but some of its continuations are correct;  
 - **False**: the event trace monitored so far is not correct, and any continuation will be incorrect as well.
 
 The first and last values are called *conclusive* since in those cases no other monitoring is required
-to decide whether the execution is correct or not; the others are *inconclusive* and
+to decide whether the **SUS** is correct or not; the others are *inconclusive* and
 require the monitor to keep running.
 
