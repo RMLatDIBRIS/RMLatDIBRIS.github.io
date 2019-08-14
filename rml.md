@@ -114,7 +114,7 @@ understand why they are useful in **RV**.
 For intersection, let us consider the following two simple properties on event traces:
 1. for any event `e_1` matching `open` there must be a subsequent event `e_2` matching `close` and no other
 event matching `open` is allowed to occur between `e_1` and `e_2`;
-      2. for any event `e_1` matching `alloc` there must be a subsequent event `e_2` matching `dealloc` and no other
+2. for any event `e_1` matching `alloc` there must be a subsequent event `e_2` matching `dealloc` and no other
 event matching `alloc` is allowed to occur between `e_1` and `e_2`.
 
 If `noc` (shorthand for 'not open and close') and `nad` (shorthand for 'not alloc and dealloc') are event types defining all events not matching `open` and `close`, and `alloc` and `dealloc`,
@@ -183,3 +183,41 @@ traces restricted to events matching type `deq` must verify `deq(val) all`, that
 `deq(val)` and then can continue with any possible trace: after checking that the initial event matches `deq(val)`, the monitor can emit
 the **True** verdict. Therefore, the specification `deq >> (deq(val) all)` defines the following constraint: the first dequeue operation, if any, must return
 `val` as value.
+
+## Parametric specifications
+
+A specification is called **parametric** if it is able to express properties depending on the data values carried by the monitored events;
+this is an important feature to ensure effectiveness of **RV**.
+
+A very simple form of parametricty can be obtained in **RML** by allowing data value variables in specifications; let us consider again
+the problem of verifying that files are properly opened and closed;
+[property 1](#more-on-intersection-and-shuffle) defined above is oversimplified because it does not take into account an important detail:
+an event matching `close` is correctly coupled with a previous event matching `open` only if the two events refer to the same file descriptor `fd`.
+Typically, `fd` is returned by a call to function `open`, and it must be passed as an argument when calling `close`, but the value `fd` will
+be known only at runtime.
+
+A naive solution to the problem could be as follows:
+```js
+open(val) matches {event:'func_post',name:'open',res:val};
+close(val) matches {event:'func_pre',name:'close',args:[val]};
+oc not matches open(_) | close(_);
+
+Main = oc >> (open(fd) close(fd))*;  // limited parametricity 
+```
+Variable `fd` is bound to the actual value when `open(fd)` is matched by an event for the first time; anyway, such a solution
+works only partially: we do not have to know in advance the value of the file descriptor to write the specification,
+but, anyway, we can check the correct use of `open` and `close` only for a unique file descriptor!
+
+This is due to the fact that in the specification `fd` is used globally, whereas we would need to declare it as a local variable
+to correctly delimit its scope:
+```js
+Main = oc >> {let fd; open(fd) close(fd)}*;  // true parametricity 
+```
+In **RML** the `let` keyword is used for declaring the data value variable `fd`, and the curly braces delimit its scope; now
+it is possible to check the correct use of `open` and `close` for different file descriptors (although only one file at time can be opened; see [Examples](examples.md) for a complete specification).
+
+As a final remark, the solution with limited parametricity provided above corresponds to the following specification, where the scope of `fd` goes beyond the Kleene operator `*`:
+```js
+Main = oc >> {let fd; (open(fd) close(fd))*}; 
+```
+

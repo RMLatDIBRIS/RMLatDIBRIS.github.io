@@ -13,3 +13,4 @@ show_downloads: false
 
 ## [Downloads](downloads.md)
 
+## [Examples](examples.md)
