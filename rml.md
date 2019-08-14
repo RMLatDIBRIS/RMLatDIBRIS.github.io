@@ -19,7 +19,7 @@ enq(val) matches {event:'func_pre',name:'enqueue',args:[val]};
 deq(val) matches {event:'func_post',name:'dequeue',res:val};
 deq matches deq(_);
 
-Main = {let val; enq(val) ((deq | Main) /\ (deq >> deq(val) all))}!;
+Main = {let val; enq(val) ((deq | Main) /\ (deq >> (deq(val) all)))}!;
 ```
 
 ## Events
@@ -174,3 +174,12 @@ The first and last values are called *conclusive* since in those cases no other 
 to decide whether the **SUS** is correct or not; the others are *inconclusive* and
 require the monitor to keep running.
 
+The derived constant `all`  corresponds to the specification `any*` denoting the set of all possible event traces; such a constant
+is useful to allow monitors to emit **True** as verdict.
+
+Let us consider, for instance, `deq >> (deq(val) all)` which is
+part of the specification for **FIFO** properties as defined at the beginning of this page; according to the filter operator,
+traces restricted to events matching type `deq` must verify `deq(val) all`, that is, they must start with an event matching
+`deq(val)` and then can continue with any possible trace: after checking that the initial event matches `deq(val)`, the monitor can emit
+the **True** verdict. Therefore, the specification `deq >> (deq(val) all)` defines the following constraint: the first dequeue operation, if any, must return
+`val` as value.
