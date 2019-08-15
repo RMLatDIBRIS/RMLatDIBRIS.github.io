@@ -213,7 +213,7 @@ to correctly delimit its scope:
 ```js
 Main = oc >> {let fd; open(fd) close(fd)}*;  // true parametricity 
 ```
-In **RML** the `let` keyword is used for declaring the data value variable `fd`, and the curly braces delimit its scope; now
+In **RML** the `let` keyword is used for declaring data value variables, as `fd` in the example, and the curly braces delimit their scope; now
 it is possible to check the correct use of `open` and `close` for different file descriptors (although only one file at time can be opened; see [Examples](examples.md) for a complete specification).
 
 As a final remark, the solution with limited parametricity provided above corresponds to the following specification, where the scope of `fd` goes beyond the Kleene operator `*`:
