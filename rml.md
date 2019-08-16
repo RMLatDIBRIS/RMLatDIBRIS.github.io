@@ -166,8 +166,8 @@ reads as follows: events matching `oc` have to satisfy `(open close)*`, and even
 
 Any time it receives a new event, the monitor generated from an **RML** specification emits a verdict in a 4-valued logic:
 - **True**: the event trace monitored so far is correct, and any continuation will be correct as well;  
-- **Possibly true**: the event trace monitored so far is correct, but some of its continuations are not correct; 
-- **Possibly false**: the event trace monitored so far is not correct, but some of its continuations are correct;  
+- **Possibly True**: the event trace monitored so far is correct, but some of its continuations are not correct; 
+- **Possibly False**: the event trace monitored so far is not correct, but some of its continuations are correct;  
 - **False**: the event trace monitored so far is not correct, and any continuation will be incorrect as well.
 
 The first and last values are called *conclusive* since in those cases no other monitoring is required
@@ -183,6 +183,37 @@ traces restricted to events matching type `deq` must verify `deq(val) all`, that
 `deq(val)` and then can continue with any possible trace: after checking that the initial event matches `deq(val)`, the monitor can emit
 the **True** verdict. Therefore, the specification `deq >> (deq(val) all)` defines the following constraint: the first dequeue operation, if any, must return
 `val` as value.
+
+Another useful operator for driving monitor verdicts is the **prefix closure operator** `!`; let us consider again the specification for
+**FIFO** queues:
+```js
+// FIFO queues
+
+enq(val) matches {event:'func_pre',name:'enqueue',args:[val]};
+deq(val) matches {event:'func_post',name:'dequeue',res:val};
+deq matches deq(_);
+
+Main = {let val; enq(val) ((deq | Main) /\ (deq >> (deq(val) all)))};
+```
+Such a specification does not employ the constant `empty`, therefore it denotes a set where all traces are
+necessarily infinite; this means that the only verdicts that can be emitted are **False** or **Possibly False**.
+What can we do to allow the monitor to emit also **Possibly True** verdicts?
+We need to specify that also all finite prefixes of the traces defined by the specification above are allowed;
+the simplest way to do that is to employ the post-fix operator `!`:
+```js
+// FIFO queues
+
+enq(val) matches {event:'func_pre',name:'enqueue',args:[val]};
+deq(val) matches {event:'func_post',name:'dequeue',res:val};
+deq matches deq(_);
+
+Main = {let val; enq(val) ((deq | Main) /\ (deq >> (deq(val) all)))}!;
+```
+At this point, another question could arise: 'ok, now **Possibly True** verdicts can be emitted, but what about **True**?';
+let us recall the meaning of the **True** verdict: the event trace monitored so far is correct, and any continuation will be correct as well.
+Can this happen when monitoring a program which manipulates a queue? Not really! The best we can get is
+**Possibly True**: the event trace monitored so far is correct, but some of its continuations are not correct; indeed, at each time
+an event corresponding to dequeueing an incorrect value could occur.
 
 ## Parametric specifications
 
@@ -221,3 +252,44 @@ As a final remark, the solution with limited parametricity provided above corres
 Main = oc >> {let fd; (open(fd) close(fd))*}; 
 ```
 
+## Generic specifications
+Declaring data value variables in specifications allows us to make them parametric in the data values carried by the monitored events,
+but still the **RML** features presented so far do not allow monitors to perform simple computations and to assign their values to variables:
+initialization of `let` variables is fully driven by event matching.
+
+Generic specifications allow users to declare parameters and to initialize them with values computed from expressions.
+Let us consider for instance the problem of extending the specification of **FIFO** queues above to track call to the
+`size` function returning the number of elements in the queue; this is not possible if we are not able to increment and decrement
+integer values. 
+```js
+// FIFO queues with size
+enq(val) matches {event:'func_pre',name:'enqueue',args:[val]};
+deq(val) matches {event:'func_post',name:'dequeue',res:val};
+size(val) matches {event:'func_post',name:'size',res:val};
+enq matches enq (_);
+deq matches deq (_);
+enqDeq matches enq | deq ;
+
+
+Queue = {let val; enq(val) ((deq | Queue) /\ (deq >> (deq(val) all)))}; // checks enqueue and dequeue
+Size<s> = (size(s) Size<s>) \/ (enq Size<s+1>) \/ (deq Size<s-1>); // checks size
+
+Main = ((enqDeq>>Queue) /\ Size<0>)!;
+```
+The main specification is the conjunction of two properties: `Queue` checking that `enqueue` and `dequeue` behave correctly, and
+`Size<s>` checking calls to `size`. The filter operator with the event type `enqDeq` is needed, because the `Queue` specification
+is restricted to event of types `enq` or `deq`; although the `Size<s>` specification checks only the `size` function,
+calls to `enqueue` and `dequeue` have to be monitored as well to keep track of the correct size of the queue.
+
+`Size<s>` is a generic specification declaring the single parameter `s` corresponding to the size of the queue; in `Main` the generic is applied with `0` because the queue is assumed to be initially empty;  the generic is defined recursively: either `size` is called and returns `s` (that is, the same value
+held by the parameter `s`) and then the trace has to continue according to `Size<s>` (that is, the generic is applied with the same size),
+or `enqueue` is called and then the trace has to continue according to `Size<s+1>` (that is, the generic is applied with the size increased by `1`),
+or `dequeue` is called and then the trace has to continue according to `Size<s-1>` (that is, the generic is applied with the size decreased by `1`).
+
+### Conditional expression
+Let us consider the problem of checking that a trace contains exactly *n* events matching `eventType`, where *n* is a parameter; in this
+case the conditional expression is required to correctly define the corresponding specification:
+```js
+Repeat<n> = if (n>0) eventType Repeat<n-1> else empty;
+```
+If `Repeat<n>` is applied to a non positive integer, then the only accepted trace is the empty one.
