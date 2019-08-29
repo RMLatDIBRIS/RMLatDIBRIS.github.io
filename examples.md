@@ -8,7 +8,7 @@ show_downloads: false
 This page contains several useful **RML** examples and patterns that can be used to verify
 several kinds of properties in different domains.
 
-## [Resource management](examples/resource.md)
+## [Resource management](/examples/resource.md)
 
 
  
