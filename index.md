@@ -7,7 +7,7 @@ show_downloads: false
 
 * * *
 
-![Logo](logoBW.png)
+![Logo](/images/logoBW.png)
 
 ## [An introductory guide](rml.md)
 
