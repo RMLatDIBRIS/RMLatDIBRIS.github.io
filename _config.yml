@@ -1,3 +1,5 @@
 theme: jekyll-theme-architect
 title: Runtime Monitoring Language
 description: A system agnostic domain specific language for runtime monitoring and verification
+plugins:
+  - jekyll-gist
