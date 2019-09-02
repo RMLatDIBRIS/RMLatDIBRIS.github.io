@@ -50,13 +50,11 @@ resource `rid`.
 
 ```js
 // non-exclusive2
-Main = {let rid; acquire(eid,rid) ((Main | use(eid,rid)* release(eid,rid)) /\ notAcquire(eid,rid)* release(eid,rid) all)}?;
-```
-The derived event type `notAcquire(eid,rid)` matches any event which does not match `acquire(eid,rid)`:
+notAcqRel(eid,rid) not matches acquire(eid,rid) | release(eid,rid);
 
-```js
-notAcquire(eid,rid) not matches acquire(eid,rid);
+Main = {let rid; acquire(eid,rid) ((Main | use(eid,rid)* release(eid,rid)) /\ notAcqRel(eid,rid)* release(eid,rid) all)}?;
 ```
+The derived event type `notAcqRel(eid,rid)` matches any event which does not match `acquire(eid,rid)` or `release(eid,rid)`.
 
 The intersection operator imposes the further constraint that entity `eid` can acquire resource `rid` only if
 it does not hold it already; this implies that an entity can reacquire a resource only after it has
@@ -74,19 +72,16 @@ Which of the following traces is correct (that is, verdict **True** is returned 
 ## Exclusive access to resources
 
 Mutually exclusive access to resources can be imposed by slightly changing the specification `non-exclusive2` [above](#a-more-precise-specification);
-we just need to replace the event type `notAcquire(eid,rid)` with `notAcquire(rid)`, to forbid acquisition of resource `rid` by any entity,
+we just need to modify the definition of event type `notAcqRel(eid,rid)`, to forbid acquisition of resource `rid` by any entity,
 and not just `eid`. In this way the specification on the right-hand-side of intersection ensures that acquisition of `rid` is allowed
 only after `rid` has been released by `eid`. This is possible thanks to the `all` operator following `release(eid,rid)`.
 
 
 ```js
 // exclusive
-Main = {let rid; acquire(eid,rid) ((Main | use(eid,rid)* release(eid,rid)) /\ notAcquire(rid)* release(eid,rid) all)}?;
-```
-The derived event type `notAcquire(rid)` is defined as follows:
+notAcqRel(eid,rid) not matches acquire(_,rid) | release(eid,rid);
 
-```js
-notAcquire(rid) not matches acquire(_,rid);
+Main = {let rid; acquire(eid,rid) ((Main | use(eid,rid)* release(eid,rid)) /\ notAcqRel(rid)* release(eid,rid) all)}?;
 ```
 
 ### Exercise

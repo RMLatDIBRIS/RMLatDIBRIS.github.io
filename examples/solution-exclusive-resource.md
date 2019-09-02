@@ -7,7 +7,9 @@ show_downloads: false
 
 ```js
 // exclusive
-Main = {let rid; acquire(eid,rid) ((Main | use(eid,rid)* release(eid,rid)) /\ notAcquire(rid)* release(eid,rid) all)}?;
+notAcqRel(eid,rid) not matches acquire(_,rid) | release(eid,rid);
+
+Main = {let rid; acquire(eid,rid) ((Main | use(eid,rid)* release(eid,rid)) /\ notAcqRel(rid)* release(eid,rid) all)}?;
 ```
 
 1. trace with events matching in the corresponding order   `acquire(0,42)` `acquire(1,42)` `use(1,42)` `use(0,42)`  `release(1,42)` `acquire(0,42)` `release(0,42)`  
