@@ -52,7 +52,7 @@ resource `rid`.
 // non-exclusive2
 notAcqRel(eid,rid) not matches acquire(eid,rid) | release(eid,rid);
 
-Main = {let rid; acquire(eid,rid) ((Main | use(eid,rid)* release(eid,rid)) /\ notAcqRel(eid,rid)* release(eid,rid) all)}?;
+Main = {let eid,rid; acquire(eid,rid) ((Main | use(eid,rid)* release(eid,rid)) /\ notAcqRel(eid,rid)* release(eid,rid) all)}?;
 ```
 The derived event type `notAcqRel(eid,rid)` matches any event which does not match `acquire(eid,rid)` or `release(eid,rid)`.
 
@@ -81,7 +81,7 @@ only after `rid` has been released by `eid`. This is possible thanks to the `all
 // exclusive
 notAcqRel(eid,rid) not matches acquire(_,rid) | release(eid,rid);
 
-Main = {let rid; acquire(eid,rid) ((Main | use(eid,rid)* release(eid,rid)) /\ notAcqRel(rid)* release(eid,rid) all)}?;
+Main = {let eid,rid; acquire(eid,rid) ((Main | use(eid,rid)* release(eid,rid)) /\ notAcqRel(eid,rid)* release(eid,rid) all)}?;
 ```
 
 ### Exercise
