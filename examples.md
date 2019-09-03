@@ -10,5 +10,7 @@ several kinds of properties in different domains.
 
 ## [Resource management](/examples/resource.md)
 
+## [Data types](/examples/data-type.md)
+
 
  

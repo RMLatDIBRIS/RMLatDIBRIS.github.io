@@ -6,7 +6,8 @@ show_downloads: false
 # Resource management verification
 
 Incorrect resource management in software systems is a typical source of subtle bugs 
-that are usually hard to detect and locate, especially in concurrent and distributed applications. This page contains **RML** specification patterns supporting verification of resource management. 
+that are usually hard to detect and locate, especially in concurrent and distributed applications.
+This is a typical control-oriented verification problem that can be managed with **RV**.
 
 ## Non-exclusive access to resources
 
