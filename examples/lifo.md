@@ -16,7 +16,7 @@ We start by considering the simple problem of verifying a single stack with just
 // stack1: single stack with push and pop
 
 Main = Stack!;
-Stack = { let val; push(val) Stack pop(val) Stack }?;
+Stack = { let val; push(val) Stack pop(val) }*;
 ```
 
 ## Single stack with push, pop and size
