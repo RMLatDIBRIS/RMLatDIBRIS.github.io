@@ -9,6 +9,11 @@ Stacks are a quite common data type, and system correctness may often depends on
 for instance, absence of data races in multi-threaded programs can be guaranteed by nested locks, whose implementation follows
 the LIFO strategy.
 
+We use the following event types:
+* `push(val)`: value `val` has been pushed on the stack;
+* `pop(val)`: value `val` has been popped from the stack;
+* `size(s)`: `s` has been computed as the size of the stack.	.
+
 ## Single stack with push and pop
 
 We start by considering the simple problem of verifying a single stack with just the `push` and `pop` operations.
@@ -18,6 +23,9 @@ We start by considering the simple problem of verifying a single stack with just
 Main = Stack!;
 Stack = { let val; push(val) Stack pop(val) }*;
 ```
+The specification assumes that the stack is initially empty; In  `Stack`,  for every event matching `push(val)` a corresponding subsequent event
+matching `pop(val)` is expected; the prefix closure operator in `Main` allows the generated monitor to emit the **True** verdict even when
+the stack is not empty after the last event of the trace.
 
 ## Single stack with push, pop and size
 
