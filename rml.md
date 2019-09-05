@@ -281,7 +281,7 @@ The main specification is the conjunction of two properties: `Queue` checking th
 is restricted to event of types `enq` or `deq`; although the `Size<s>` specification checks only the `size` function,
 calls to `enqueue` and `dequeue` have to be monitored as well to keep track of the correct size of the queue.
 
-`Size<s>` is a generic specification declaring the single parameter `s` corresponding to the size of the queue; in `Main` the generic is applied with `0` because the queue is assumed to be initially empty;  the generic is defined recursively: either `size` is called and returns `s` (that is, the same value
+`Size<s>` is a generic specification declaring the single parameter `s` corresponding to the size of the queue; such parameters are called *state variables* because they define attributes of the state of the monitor generated from the specification. In `Main` the generic is applied to `0` because the queue is assumed to be initially empty;  the generic is defined recursively: either `size` is called and returns `s` (that is, the same value
 held by the parameter `s`) and then the trace has to continue according to `Size<s>` (that is, the generic is applied with the same size),
 or `enqueue` is called and then the trace has to continue according to `Size<s+1>` (that is, the generic is applied with the size increased by `1`),
 or `dequeue` is called and then the trace has to continue according to `Size<s-1>` (that is, the generic is applied with the size decreased by `1`).

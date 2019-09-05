@@ -24,18 +24,26 @@ Main = Stack!;
 Stack = { let val; push(val) Stack pop(val) }*;
 ```
 The specification assumes that the stack is initially empty; In  `Stack`,  for every event matching `push(val)` a corresponding subsequent event
-matching `pop(val)` is expected; the prefix closure operator in `Main` allows the generated monitor to emit the **True** verdict even when
-the stack is not empty after the last event of the trace.
+matching `pop(val)` is expected; therefore `push` and `pop` events must be balanced. The prefix closure operator in `Main` allows the generated monitor to emit the **True** verdict even when the stack is not empty after the last event of the trace.
+
+The `*` operator allows the definition of `Stack` to be more compact than
+<br>`Stack = { let val; push(val) Stack pop(val) Stack }?;`.
 
 ## Single stack with push, pop and size
-
+Let us now consider a more elaborated example where the specification has to verify also the `size` operation;
+to manage this, we need to introduce the state variable `s` with a generic specification, to track the size of the stack.
+If we follow the pattern of specification `stack1` we get a rather compact specification which is, however, not so readable.
 
 ```js
 // stack2: single stack with push, pop and size
 
-Main = Stack<0>!; 
-Stack<s> = size(s)* { let val; push(val) Stack<s+1> pop(val) Stack<s> }?;
+Main = Stack<0>!;
+Stack<s> = size(s)* { let val; push(val)  Stack<s+1> pop(val) size(s)* }*;
 ```
+The part that concerns us is the definition of `Stack<s>`; the definition of `Main` is clear: now `Stack` is generic and, therefore, has to be applied
+to the value 0, since the specification assumes that the stack is initially empty.
+Perhaps, a more readable definition for `Stack<s>` is <br>
+`Stack<s> = size(s)* { let val; push(val) Stack<s+1> pop(val) Stack<s> }?;`
 
 ## Multiple stacks with push, pop and size
 
