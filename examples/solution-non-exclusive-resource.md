@@ -4,6 +4,7 @@ title: Resource management
 show_downloads: false
 ---
 # Solution
+Which of the following traces is correct (that is, verdict **True** is returned by the monitor) according to the specification `non-exclusive1`? 
 
 ```js
 // non-exclusive1

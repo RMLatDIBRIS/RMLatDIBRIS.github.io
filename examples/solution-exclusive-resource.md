@@ -5,6 +5,8 @@ show_downloads: false
 ---
 # Solution
 
+Which of the following traces is correct (that is, verdict **True** is returned by the monitor) according to the specification `exclusive`
+
 ```js
 // exclusive
 notAcqRel(eid,rid) not matches acquire(_,rid) | release(eid,rid);
