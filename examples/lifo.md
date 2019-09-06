@@ -105,8 +105,16 @@ Extend the 'divide et impera' version of [specification `stack2`](#divide-et-imp
 ## Multiple stacks with push, pop and size
 
 ```js
-// stacks: multiple stacks with push, pop and size
+// stacks: multiple stacks with push, pop and size, 'divide et impera' approach
 
-Main = { let id; new(id) (Main | (Stack<id,0>! free(id))) }?; 
-Stack<id,s> = size(id,s)* { let val; push(id,val) Stack<id,s+1> pop(id,val) Stack<id,s> }?;
+// event types needed for the 'divide et impera' approach 
+push matches push(_,_); 
+pop matches pop(_,_); 
+not_size not matches size(_,_);
+
+Main = {let id; new(id) (Main | (Single<id> free(id)))}?; 
+
+Single<id> = ((not_size>>Stack<id>)/\Size<id,0>)!;
+Stack<id> = { let val; push(id,val) Stack<id> pop(id,val) }*;
+Size<id,s> = (size(id,s) Size<id,s> \/ pop Size<id,s-1> \/ push Size<id,s+1>)?; 
 ```
