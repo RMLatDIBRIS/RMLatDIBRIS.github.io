@@ -11,6 +11,6 @@ the same specification can be used to verify different kinds of implementations 
 
 ## [Stacks](lifo.md)
 
-## [FIFO queues](fifo.md)
+## [Queues](fifo.md)
 
 ## [Sets](set.md)

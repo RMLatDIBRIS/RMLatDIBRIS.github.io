@@ -9,7 +9,7 @@ Stacks are a quite common data type, and system correctness may often depends on
 for instance, absence of data races in multi-threaded programs can be guaranteed by nested locks, whose implementation follows
 the LIFO strategy.
 
-We use the following event types:
+The specifications are based on the following event types:
 * `push(val)`: value `val` has been pushed on the stack;
 * `pop(val)`: value `val` has been popped from the stack;
 * `size(s)`: `s` has been computed as the size of the stack.	
