@@ -7,13 +7,14 @@ show_downloads: false
 
 The specifications are based on the following event types:
 * `add(el,res)`: function `add` has been called with argment `el` and boolean result `res`
-* `rm(el,res)`: function `remove` has been called with argment `el` and boolean result `res`
+* `del(el,res)`: function `delete` has been called with argment `el` and boolean result `res`
 
-## Single set with add and remove
+## Single set with add and delete
 
 ```js
-rm_false matches rm(_,false); 
-not_add_true_rm(el) not matches add(el,true) | rm(el,_);
+del_false matches del(_,false); 
+not_add_true_del(el) not matches add(el,true) | del(el,_);
 
-Main = rm_false* {let el; add(el,true) ((Main | add(el,false)* rm(el,true)) /\ not_add_true_rm(el)* rm(el,true) all)}?;
+Main = Set!;
+Set = del_false* {let el; add(el,true) ((Set | add(el,false)* del(el,true)) /\ not_add_true_del(el)* del(el,true) all)}?;
 ```
