@@ -29,5 +29,5 @@ To verify also the `size` operation we need to introduce the state variable `s` 
 as also done for [stacks](lifo#single-stack-with-push-pop-and-size).
 
 ### Exercise
-Extend version *set1* of the specification of sets, to verify also `size` by following the 'divide et impera' approach as done
-for [stacks](lifo#divide-et-impera-approach). (see the [solution](solution-set2.md))
+Extend version *set1* of the specification of sets, to verify also `size` by following the approach 'by decomposition' as done
+for [stacks](lifo#by-decomposition-approach). (see the [solution](solution-set2.md))

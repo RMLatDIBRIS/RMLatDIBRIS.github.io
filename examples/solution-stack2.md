@@ -5,14 +5,14 @@ show_downloads: false
 ---
 # Solution
 
-Extend the 'divide et impera' version of [specification *stack2*](lifo#divide-et-impera-approach) to verify also the top operation with the corresponding event type:
+Extend the 'by decomposition'  version of [specification *stack2*](lifo#approach-by-decomposition) to verify also the top operation with the corresponding event type:
 
 * `top(val)`: value `val` has been computed as the top of the stack.
 
 ```js
-// stack3: single stack with push, pop, size, and top with the 'divide et impera' approach
+// stack3: single stack with push, pop, size, and top with the approach 'by decomposition'
 
-// event types needed for the 'divide et impera' approach 
+// event types needed for the approach 'by decomposition'   
 push matches push(_); 
 pop matches pop(_); 
 not_size not matches size(_);

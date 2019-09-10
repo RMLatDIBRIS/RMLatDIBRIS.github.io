@@ -10,7 +10,7 @@ show_downloads: false
 
 not_add_true_del(el) not matches add(el,true) | del(el,_);
 
-// event types needed for the 'divide et impera' approach 
+// event types needed for the approach 'by decomposition' 
 add(res) matches add(_,res); 
 del(res) matches del(_,res); 
 not_size not matches size(_);

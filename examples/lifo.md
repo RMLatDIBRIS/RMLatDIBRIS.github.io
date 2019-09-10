@@ -59,18 +59,18 @@ following version:
 ```js
 Stack<s> = size(s) Stack<s> \/ { let val; push(val) Stack<s+1> pop(val) Stack<s> }?;
 ```
-### 'Divide et impera' approach
+### Approach 'by decomposition'
 
 Even the last version of `Stack` above suffers from a problem: the pattern does not scale well
 when new kinds of events have to be verified; let us consider, for instance, to extend
 the specification to check also the `top` operation (see the [exercise below](#exercise-1)).
-In this case, a pattern based on a 'divide et impera' approach helps to solve this problem:
+In this case, a pattern based on an approach 'by decomposition' helps to solve this problem:
 with the use of the filter and intersection operators we can divide the verification problem
 into simpler sub-problems.
 
 ```js
 // stack2: single stack with push, pop and size
-// divide et impera approach
+// approach 'by decomposition' 
 
 Main = ((not_size>>Stack) /\ Size<0>)!;
 Stack = { let val; push(val) Stack pop(val) }*;
@@ -93,7 +93,7 @@ not_size not matches size(_);
 Despite its verbosity, this pattern favors extension of the specification (see the [exercise below](#exercise-1)). 
 
 ### Exercise
-Extend the 'divide et impera' version of [specification *stack2*](#divide-et-impera-approach) to verify also the top operation with the corresponding event type: (see the [solution](solution-stack2.md))
+Extend the 'by decomposition' version of [specification *stack2*](#approach-by-decomposition) to verify also the top operation with the corresponding event type: (see the [solution](solution-stack2.md))
 
 * `top(val)`: value `val` has been computed as the top of the stack.
 
@@ -105,9 +105,9 @@ Extend the 'divide et impera' version of [specification *stack2*](#divide-et-imp
 ## Multiple stacks with push, pop and size
 
 ```js
-// stacks: multiple stacks with push, pop and size, 'divide et impera' approach
+// stacks: multiple stacks with push, pop and size, approach 'by decomposition' 
 
-// event types needed for the 'divide et impera' approach 
+// event types needed for the approach 'by decomposition'  
 push matches push(_,_); 
 pop matches pop(_,_); 
 not_size not matches size(_,_);
