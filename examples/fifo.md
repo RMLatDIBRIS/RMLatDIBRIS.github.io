@@ -18,7 +18,7 @@ Main = Queue!;
 Queue = {let val; enq(val) (deq(val) | Queue)}; 
 ```
 
-## Randomized queues with `peek`
+## Randomized queues with peek
 
 ### Exercise
 Show that the following extension of *queue1*, that should verify also `peek`, is not correct. (see the [solution](solution-queue1.md))
