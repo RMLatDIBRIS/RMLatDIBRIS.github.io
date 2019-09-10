@@ -28,5 +28,9 @@ The similarity between the two specifications can be outlined in terms of event 
 * `del(el,true)` corresponds to `release(_,el)`
 * `not_add_true_del(el)` corresponds to `notAcqRel(_,el)`
 
-The extension of *set1* consists in the addition of the event type `del_false`; in terms of resource management, this could correspond in verifying
-also the event 'acquisition of the resource has been negated'.
+There are, however, two differences:
+
+* specification *set1* uses the `!` operator, since in general a program is considered correct if it terminates with a non-empty set, but not
+if it has not released some acquired resource;
+* specification *set1* verifies also events of type `del_false`; in terms of resource management, this could correspond in verifying
+also the events of type 'acquisition of the resource has been negated'.
