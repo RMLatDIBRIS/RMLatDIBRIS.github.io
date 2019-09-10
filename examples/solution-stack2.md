@@ -5,7 +5,7 @@ show_downloads: false
 ---
 # Solution
 
-Extend the 'divide et impera' version of [specification `stack2`](lifo#divide-et-impera-approach) to verify also the top operation with the corresponding event type:
+Extend the 'divide et impera' version of [specification *stack2*](lifo#divide-et-impera-approach) to verify also the top operation with the corresponding event type:
 
 * `top(val)`: value `val` has been computed as the top of the stack.
 

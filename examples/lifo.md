@@ -31,7 +31,7 @@ The `*` operator allows a more compact version for the definition of `Stack`; wi
 Stack = { let val; push(val) Stack pop(val) Stack }?;
 ```
 ### Exercise
-Show that the following variation of `stack1` is not correct. (see the [solution](solution-stack1.md))
+Show that the following variation of *stack1* is not correct. (see the [solution](solution-stack1.md))
 ```js
 Main = Stack!;
 Stack = { let val; (push(val) Stack pop(val))* };
@@ -40,7 +40,7 @@ Stack = { let val; (push(val) Stack pop(val))* };
 ## Single stack with push, pop and size
 Let us now consider a more elaborated example where the specification has to verify also the `size` operation;
 to manage this, we need to introduce the state variable `s` with a generic specification, to track the size of the stack.
-If we follow the pattern of specification `stack1` we get a rather compact specification which is, however, not so readable.
+If we follow the pattern of specification *stack1* we get a rather compact specification which is, however, not so readable.
 
 ```js
 // stack2: single stack with push, pop and size
@@ -76,7 +76,7 @@ Main = ((not_size>>Stack) /\ Size<0>)!;
 Stack = { let val; push(val) Stack pop(val) }*;
 Size<s> = (size(s) Size<s> \/ pop Size<s-1> \/ push Size<s+1>)?;
 ```
-`Stack` now coincides with the definition given for `stack1` and concerns verification of the events matching
+`Stack` now coincides with the definition given for *stack1* and concerns verification of the events matching
 `push` or `pop` only; for this reason, the filter with event type `not_size` is needed in `Main`.
 
 The new generic `Size` verifies events of type `size`, but also events of type `push` and `pop` must be involved,
@@ -93,7 +93,7 @@ not_size not matches size(_);
 Despite its verbosity, this pattern favors extension of the specification (see the [exercise below](#exercise-1)). 
 
 ### Exercise
-Extend the 'divide et impera' version of [specification `stack2`](#divide-et-impera-approach) to verify also the top operation with the corresponding event type: (see the [solution](solution-stack2.md))
+Extend the 'divide et impera' version of [specification *stack2*](#divide-et-impera-approach) to verify also the top operation with the corresponding event type: (see the [solution](solution-stack2.md))
 
 * `top(val)`: value `val` has been computed as the top of the stack.
 

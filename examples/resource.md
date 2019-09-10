@@ -35,7 +35,7 @@ in the corresponding order `acquire(42)`, `acquire(42)`, `release(42)` and `rele
 
 ### Exercise
 
-Which of the following traces is correct (that is, verdict **True** is returned by the monitor) according to the specification `non-exclusive1` [above](#simplified-specification)? (see the [solution](solution-non-exclusive-resource.md))
+Which of the following traces is correct (that is, verdict **True** is returned by the monitor) according to the specification *non-exclusive1* [above](#simplified-specification)? (see the [solution](solution-non-exclusive-resource.md))
 
 1. trace with events matching in the corresponding order   `acquire(42)` `acquire(42)` `use(42)` `release(42)` `use(42)` `release(42)` 
 2. trace with events matching in the corresponding order   `acquire(42)` `acquire(42)` `release(42)` `use(42)` `use(42)` `release(42)` 
@@ -63,7 +63,7 @@ released it. This is possible thanks to the `all` operator following `release(ei
 
 ### Exercise
 
-Which of the following traces is correct (that is, verdict **True** is returned by the monitor) according to the specification `non-exclusive2` [above](#a-more-precise-specification)? (see the [solution](solution-non-exclusive2-resource.md))
+Which of the following traces is correct (that is, verdict **True** is returned by the monitor) according to the specification *non-exclusive2* [above](#a-more-precise-specification)? (see the [solution](solution-non-exclusive2-resource.md))
 
 1. trace with events matching in the corresponding order   `acquire(0,42)` `acquire(1,42)` `use(1,42)` `release(1,42)` `use(0,42)` `release(0,42)` 
 2. trace with events matching in the corresponding order   `acquire(0,42)` `acquire(1,42)` `release(0,42)` `use(1,42)` `use(1,42)` `release(1,42)` 
@@ -72,7 +72,7 @@ Which of the following traces is correct (that is, verdict **True** is returned 
 
 ## Exclusive access to resources
 
-Mutually exclusive access to resources can be imposed by slightly changing the specification `non-exclusive2` [above](#a-more-precise-specification);
+Mutually exclusive access to resources can be imposed by slightly changing the specification *non-exclusive2* [above](#a-more-precise-specification);
 we just need to modify the definition of event type `notAcqRel(eid,rid)`, to forbid acquisition of resource `rid` by any entity,
 and not just `eid`. In this way the specification on the right-hand-side of intersection ensures that acquisition of `rid` is allowed
 only after `rid` has been released by `eid`. This is possible thanks to the `all` operator following `release(eid,rid)`.
@@ -87,7 +87,7 @@ Main = {let eid,rid; acquire(eid,rid) ((Main | use(eid,rid)* release(eid,rid)) /
 
 ### Exercise
 
-Which of the following traces is correct (that is, verdict **True** is returned by the monitor) according to the specification `exclusive` [above](#exclusive-access-to-resources)? (see the [solution](solution-exclusive-resource.md))
+Which of the following traces is correct (that is, verdict **True** is returned by the monitor) according to the specification *exclusive* [above](#exclusive-access-to-resources)? (see the [solution](solution-exclusive-resource.md))
 
 1. trace with events matching in the corresponding order   `acquire(0,42)` `acquire(1,42)` `use(1,42)` `use(0,42)`  `release(1,42)` `acquire(0,42)` `release(0,42)`  
 2. trace with events matching in the corresponding order   `acquire(0,42)` `use(0,42)` `acquire(1,43)` `release(0,42)` `use(1,42)` `release(1,43)` 

@@ -5,7 +5,7 @@ show_downloads: false
 ---
 # Solution
 
-Which of the following traces is correct (that is, verdict **True** is returned by the monitor) according to the specification `non-exclusive2`?
+Which of the following traces is correct (that is, verdict **True** is returned by the monitor) according to the specification *non-exclusive2*?
 
 ```js
 // non-exclusive2

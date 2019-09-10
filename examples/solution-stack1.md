@@ -5,7 +5,7 @@ show_downloads: false
 ---
 # Solution
 
-Show that the following variation of `stack1` is not correct. 
+Show that the following variation of *stack1* is not correct. 
 ```js
 Main = Stack!;
 Stack = { let val; (push(val) Stack pop(val))* };
