@@ -4,7 +4,7 @@ title: Sets
 show_downloads: false
 ---
 # Solution
-For convenience the two specifications are copied below
+For convenience the two specifications are copied below:
 
 ```js
 // exclusive
