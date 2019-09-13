@@ -7,7 +7,7 @@ show_downloads: false
 Extend [specification *queue3*](fifo#randomized-queues-with-no-repetitions-enqueue-and-dequeue) to verify `peek`.
 
 ```js
-// queue3: single random queue with no repetitions, enqueue, dequeue and peek
+// queue4: single random queue with no repetitions, enqueue, dequeue and peek
 
 peek_deq matches peek(_) | deq(_);
 

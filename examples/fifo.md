@@ -51,11 +51,21 @@ Extend specification *queue3* to verify `peek`.
 ## FIFO queues with enqueue and dequeue 
 
 ```js
+// queue5: single FIFO queue with enqueue and dequeue 
+
 deq matches deq(_);
 
 Main = Queue!; 
 Queue={let val; enq(val) ((deq|Queue)/\(deq>>deq(val) all))};
 ```
+
+## FIFO queues with enqueue, dequeue and peek
+
+### Exercise
+Extend specification *queue5* to verify `peek`. (see the [solution](solution-queue4.md))
+
+*Hint*: the pattern used for *queue2* and *queue4*  does not work!
+
 
 ## FIFO queues with no repetitions, enqueue and dequeue 
 
