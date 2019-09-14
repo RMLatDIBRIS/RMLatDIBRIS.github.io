@@ -14,3 +14,5 @@ the same specification can be used to verify different kinds of implementations 
 ## [Queues](fifo.md)
 
 ## [Sets](set.md)
+
+## [Priority Queues](priority.md)
