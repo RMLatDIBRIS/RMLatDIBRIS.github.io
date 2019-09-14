@@ -69,10 +69,5 @@ Extend specification *queue5* to verify `peek`. (see the [solution](solution-que
 
 ## FIFO queues with no repetitions, enqueue and dequeue 
 
-```js
-deq matches deq(_);
-
-Main = Queue!; 
-Queue={let val; enq(val) ((enq(val)* deq|Queue)/\(deq>>deq(val) all))};
-```
-
+### Exercise
+Extend specification [*queue3*](#randomized-queues-with-no-repetitions-enqueue-and-dequeue) to verify FIFO queues with no repetitions, `enqueue` and `dequeue`. (see the [solution](solution-queue5.md))
