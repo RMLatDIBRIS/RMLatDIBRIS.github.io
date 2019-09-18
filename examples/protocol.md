@@ -12,17 +12,31 @@ The specifications are based on the following event types:
 * `msg(ty)`: message of type `ty` has been received
 * `ack(ty)`: acknowledge of type `ty` has been received
 
-### Specification working with just two message types 
+### Specification for two message types 
 
 ```js
-// alt-bit: alternating bit protocols with two message types
+// alt-bit: alternating bit protocol with two message types
 
 msg matches msg(_);
 ack matches ack(_);
 type(ty) matches msg(ty)|ack(ty);
 
-Main = (msg>>MM) /\ (ack>>AA) /\ (type(1)>>MA<1>) /\ (type(2)>>MA<2>);
-MM = msg(1) msg(2) MM;
-AA = (ack(1)\/ack(2)) AA;
-MA<ty> = msg(ty) ack(ty) MA<ty>;
+Main = (msg>>MM) /\ MA;
+MM = msg(1)msg(2)MM;
+MA = {let ty; msg(ty) ((type(ty) >> ack(ty) all) /\ (ack(ty) | MA))};
+```
+
+### Specification for arbitrary message types 
+
+```js
+// alt-bit-gen: alternating bit protocol with arbitrary message types
+
+msg matches msg(_);
+ack matches ack(_);
+type(ty) matches msg(ty)|ack(ty);
+
+Main = (msg>>msg(1) BS<1>) /\ MA;
+BS<ty> = {let ty2; msg(ty2) if(ty2==ty+1) BS<ty2> else MM<2,ty>};
+MM<ty,max> = msg(ty) if(ty>=max) MM<1,max> else MM<ty+1,max>; 
+MA = {let ty; msg(ty) ((type(ty) >> ack(ty) all) /\ (ack(ty) | MA))};
 ```
