@@ -12,6 +12,8 @@ several kinds of properties in different domains.
 
 ## [Data types](/examples/data-type.md)
 
+## [Interaction Protocols](/examples/protocol.md)
+
 ## [Internet Of Things](/examples/iot.md)
 
 
