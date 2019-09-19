@@ -10,7 +10,7 @@ show_downloads: false
 ```js
 // range: range anomaly detection for single or multiple sensors
 
-sensor_in_range(min,max) matches {event:'func_post',name:'sensor',res:{value:val}} with min<=val && val<=max;
+sensor_in_range(min,max) matches sensor(val) with min<=val && val<=max;
 
 Main = CheckRange<22,24>;
 CheckRange<min,max> = sensor_in_range(min,max)*;
@@ -21,7 +21,6 @@ CheckRange<min,max> = sensor_in_range(min,max)*;
 ```js
 // timestamp: timestamp anomaly detection for single or multiple sensors
 
-sensor(time) matches {event:'func_post',name:'sensor',res:{timestamp:time}};
 check_time(time1,time2) matches sensor(time2) with time2 > time1;
 
 Main = {let time; sensor(time) CheckTime<time>}!;
@@ -33,7 +32,6 @@ CheckTime<time1> = {let time2; check_time(time1,time2) CheckTime<time2>};
 ```js
 // derivative: derivative anomaly detection for single or multiple sensors
 
-sensor(val,time) matches {event:'func_post',name:'sensor',res:{value:val,timestamp:time}};
 check_der(val1,time1,val2,time2) matches sensor(val2,time2)
 			       with delta==(val2-val1)/(time2-time1) && abs(delta) <= 1; 
 
