@@ -20,7 +20,6 @@ CheckRange<min,max> = sensor_in_range(min,max)*;
 
 ```js
 // timestamp: timestamp anomaly detection for single or multiple sensors
-// works with traces generated from timestamp.js
 
 sensor(time) matches {event:'func_post',name:'sensor',res:{timestamp:time}};
 check_time(time1,time2) matches sensor(time2) with time2 > time1;
