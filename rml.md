@@ -10,7 +10,7 @@ which decouples monitoring from instrumentation by allowing users to write speci
 to synthesize monitors from them, independently of the **System Under Scrutiny** (**SUS**) and its instrumentation. 
 
 **RML** is more expressive than **Context-Free** grammars, for instance the following specification allows
-monitoring of **FIFO** properties:
+monitoring of [**FIFO** properties](examples/fifo):
 
 ```js
 // FIFO queues
@@ -84,6 +84,18 @@ use different names, by only changing the definitions of `enq(val)` and `deq(val
 enq(val) matches {event:'func_pre',name:'add',args:[val]};
 deq(val) matches {event:'func_post',name:'remove',res:val};
 ```  
+
+## Definition of event types with numerical constraints
+Sometimes pattern matching is not expressive enough to define event types; the specification of [priority queues](examples/priority), for instance,
+requires an event type `deq` to verify that a dequeued integer verifies an inequality constraint.
+
+```js
+deq_geq(val) matches deq(val2) with val2 >= val;
+```
+
+Event type `deq_geq(val)` matches all events corresponding to dequeuing an integer greater than or equal to `val`.  
+When defining an event type, **RML** allows the possibility of adding a set of inequality constraints over real numbers that have to be satisfied
+in case one of the specified patterns matches the event. 
 
 ## Basic and derived operators
 An **RML** specification denotes a set of event traces, obtained by combining simpler sets with the following basic binary operators (in
