@@ -95,7 +95,13 @@ deq_geq(val) matches deq(val2) with val2 >= val;
 
 Event type `deq_geq(val)` matches all events corresponding to dequeuing an integer greater than or equal to `val`.  
 When defining an event type, **RML** allows the possibility of adding a set of inequality constraints over real numbers that have to be satisfied
-in case one of the specified patterns matches the event. 
+in case one of the specified patterns matches the event; the possibility of satisfying numerical constraints is quite useful in domains
+such as [IoT](examples/iot) or [robotic systems](examples/ros). 
+
+```js
+check_der(val1,time1,val2,time2) matches sensor(val2,time2)  // checks derivative anomaly of a sensor
+			       with delta==(val2-val1)/(time2-time1) && abs(delta) <= 1; 
+```
 
 ## Basic and derived operators
 An **RML** specification denotes a set of event traces, obtained by combining simpler sets with the following basic binary operators (in
