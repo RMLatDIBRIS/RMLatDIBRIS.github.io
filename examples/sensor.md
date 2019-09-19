@@ -37,7 +37,7 @@ CheckTime<time1> = {let time2; check_time(time1,time2) CheckTime<time2>};
 
 sensor(val,time) matches {event:'func_post',name:'sensor',res:{value:val,timestamp:time}};
 check_der(val1,time1,val2,time2) matches sensor(val2,time2)
-			       with delta==(val2-val1)/(time2-time1) && -1 <= delta && delta <= 1; 
+			       with delta==(val2-val1)/(time2-time1) && abs(delta) <= 1; 
 
 Main = {let val1,time1; sensor(val1,time1) CheckDer<val1,time1>}!;
 CheckDer<val1,time1> = {let val2, time2; check_der(val1,time1,val2,time2) CheckDer<val2,time2>};
