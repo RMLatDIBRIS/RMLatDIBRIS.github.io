@@ -23,9 +23,8 @@ CheckRange<min,max> = sensor_in_range(min,max)*;
 
 sensor(time) matches {event:'func_post',name:'sensor',res:{timestamp:time}};
 check_time(time1,time2) matches sensor(time2) with time2 > time1;
-relevant matches sensor(_);
 
-Main = relevant >> {let time; sensor(time) CheckTime<time>}!;
+Main = {let time; sensor(time) CheckTime<time>}!;
 CheckTime<time1> = {let time2; check_time(time1,time2) CheckTime<time2>};
 ```
 
