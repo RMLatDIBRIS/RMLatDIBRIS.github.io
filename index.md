@@ -11,6 +11,10 @@ show_downloads: false
 
 ## [An introductory guide](rml.md)
 
-## [Downloads](downloads.md)
+## [Implementation](implementation.md)
 
 ## [Examples](examples.md)
+
+## [Downloads](downloads.md)
+
+## [Bibliography](biblio.md)
