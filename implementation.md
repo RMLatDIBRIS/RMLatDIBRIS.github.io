@@ -4,7 +4,7 @@ title: Implementation
 show_downloads: false
 ---
 
-#Implementation
+# Implementation
 
 RML [Fra19] compiles down to an operational, low-level formalism, named
 (parametric) trace expressions [AFM16,AFM17,AFFM17]. Trace expressions and their predecessors, global types, have been used to model and verify, among the others (see the [selected publications list](biblio.md)),  multiagent systems [ADM13,BMA15] and IoT systems [ABFM15b,AFDL+17,LAFO+18].
@@ -28,7 +28,7 @@ static instrumentation tool is available on the repository.
 
 
 
-##Bibliography
+## Bibliography
 
 *[ABFM15b]* Ancona D., Briola D., Ferrando A., Mascardi V. (2015) Runtime verification of fail-uncontrolled and ambient intelligence systems: A uniform approach. Intelligenza Artificiale 9(2): 131-148 [Bibtex from DBLP](https://dblp.uni-trier.de/rec/bibtex/journals/ia/AnconaBFM15)
 

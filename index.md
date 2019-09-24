@@ -17,4 +17,4 @@ show_downloads: false
 
 ## [Downloads](downloads.md)
 
-## [Bibliography](biblio.md)
+## [Selected publications](biblio.md)

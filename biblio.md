@@ -6,7 +6,7 @@ show_downloads: false
 
 # Selected publications 
 
-##2019 
+## 2019 
 
 *[Fer19]* Ferrando A. (2019) The early bird catches the worm: First verify, then monitor! Sci. Comput. Program. 172: 160-179 [Bibtex from DBLP](https://dblp.uni-trier.de/rec/bibtex/journals/scp/Ferrando19)
 
@@ -19,7 +19,7 @@ show_downloads: false
 Comparing Testing and Runtime Verification of IoT Systems: A Preliminary Evaluation based on a Case Study.
 In Proceedings of the 14th International Conference on Evaluation of Novel Approaches to Software Engineering - Volume 1: ENASE, 434-441, 2019, Heraklion, Crete, Greece [Bibtex from DBLP](https://dblp.uni-trier.de/rec/bibtex/conf/enase/LeottaCFOARR19)
 
-##2018 
+## 2018 
 
 *[ADF18]* Ancona D., Dagnino F., and Franceschini L. (2018) A formalism for specification of Java API interfaces. In Companion Proceedings for the ISSTA/ECOOP 2018 Workshops (ISSTA '18). ACM, New York, NY, USA, 24-26. DOI: https://doi.org/10.1145/3236454.3236476 [Bibtex from DBLP](https://dblp.uni-trier.de/rec/bibtex/conf/issta/AnconaDF18)
 
@@ -39,7 +39,7 @@ Improving flexibility and dependability of remote patient monitoring with agent-
 
 *[LRCA+18]* Leotta M., Ricca F., Clerissi D., Ancona D., Delzanno G., Ribaudo M., Franceschini L. (2018) Towards an Acceptance Testing Approach for Internet of Things Systems. In: Garrigós I., Wimmer M. (eds) Current Trends in Web Engineering. ICWE 2017. Lecture Notes in Computer Science, vol 10544. Springer, Cham [Bibtex from DBLP](https://dblp.uni-trier.de/rec/bibtex/conf/icwe/LeottaRCADRF17)
 
-##2017
+## 2017
 
 *[AFDL+17]* Ancona D., Franceschini L., Delzanno G., Leotta M., Ribaudo M., Ricca F. (2017)
 Towards Runtime Monitoring of Node.js and Its Application to the Internet of Things. In Proceedings First Workshop on Architectures, Languages and Paradigms for IoT, ALP4IoT@iFM 2017: 27-42 [Bibtex from DBLP](https://dblp.uni-trier.de/rec/bibtex/journals/corr/abs-1802-01790)
@@ -50,7 +50,7 @@ Towards Runtime Monitoring of Node.js and Its Application to the Internet of Thi
 
 *[FAM17]* Ferrando A., Ancona D.,  Mascardi V. (2017) Decentralizing MAS Monitoring with DecAMon. In Proceedings of the 16th Conference on Autonomous Agents and MultiAgent Systems (AAMAS '17). International Foundation for Autonomous Agents and Multiagent Systems, Richland, SC, 239-248 [Bibtex from DBLP](https://dblp.uni-trier.de/rec/bibtex/conf/atal/FerrandoAM17)
 
-##2016
+## 2016
 
 *[ABBC+16]* Ancona D., Bono V., Bravetti M., Campos J., Castagna G.,  Deniélou P-M., Gay S. J., Gesbert N., Giachino E., Hu R., Johnsen E. B., Martins F., Mascardi V., Montesi F., Neykova R., Ng N., Padovani L., Vasconcelos V. T., Yoshida N. (2016)
 Behavioral Types in Programming Languages. Foundations and Trends in Programming Languages 3(2-3): 95-230 [Bibtex from DBLP](https://dblp.uni-trier.de/rec/bibtex/journals/ftpl/AnconaBB0CDGGGH16)
@@ -59,7 +59,7 @@ Behavioral Types in Programming Languages. Foundations and Trends in Programming
 
 *[FAM16]* Ferrando A., Ancona D., Mascardi V. (2016) Monitoring Patients with Hypoglycemia Using Self-adaptive Protocol-Driven Agents: A Case Study. In: Baldoni M., Müller J., Nunes I., Zalila-Wenkstern R. (eds) Engineering Multi-Agent Systems. EMAS 2016. Lecture Notes in Computer Science, vol 10093. Springer, Cham [Bibtex from DBLP](https://dblp.uni-trier.de/rec/bibtex/conf/atal/FerrandoAM16)
 
-##2015
+## 2015
 
 *[ABFM15a]* Ancona D., Briola D., Ferrando A., Mascardi V. (2015) Global Protocols as First Class Entities for Self-Adaptive Agents. In Proceedings of the 2015 International Conference on Autonomous Agents and Multiagent Systems (AAMAS '15). International Foundation for Autonomous Agents and Multiagent Systems, Richland, SC, 1019-1029 [Bibtex from DBLP](https://dblp.uni-trier.de/rec/bibtex/conf/atal/AnconaBFM15)
 
@@ -68,11 +68,11 @@ Behavioral Types in Programming Languages. Foundations and Trends in Programming
 
 *[BMA15]* Briola D., Mascardi V., Ancona D. (2015) Distributed Runtime Verification of JADE Multiagent Systems. In: Camacho D., Braubach L., Venticinque S., Badica C. (eds) Intelligent Distributed Computing VIII. Studies in Computational Intelligence, vol 570. Springer, Cham [Bibtex from DBLP](https://dblp.uni-trier.de/rec/bibtex/conf/idc/BriolaMA14)
 
-##2014 
+## 2014 
 
 *[ABEM+14]* Ancona D., Briola D., El Fallah Seghrouchni A., Mascardi V., Taillibert P. (2014) Efficient Verification of MASs with Projections. In: Dalpiaz F., Dix J., van Riemsdijk M.B. (eds) Engineering Multi-Agent Systems. EMAS 2014. Lecture Notes in Computer Science, vol 8758. Springer, Cham [Bibtex from DBLP](https://dblp.uni-trier.de/rec/bibtex/conf/dalt/AnconaBFMT14)
 
-##2013
+## 2013
 
 *[ABM13]* Ancona D., Barbieri M., Mascardi V. (2013) Constrained global types for dynamic checking of protocol conformance in multi-agent systems. In Proceedings of the 28th Annual ACM Symposium on Applied Computing (SAC '13). ACM, New York, NY, USA, 1377-1379. DOI: https://doi.org/10.1145/2480362.2480620 [Bibtex from DBLP](https://dblp.uni-trier.de/rec/bibtex/conf/sac/AnconaBM13)
 
