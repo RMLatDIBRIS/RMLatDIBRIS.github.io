@@ -3,6 +3,10 @@ layout: default
 title: Selected publications
 show_downloads: false
 ---
+The design and development of **RML** is based on several research contributions on trace calculi for RV based on *trace expressions* and initially
+inspired to global types.
+
+The main contributors of **RML** are [Davide Ancona](https://person.dibris.unige.it/ancona-davide/), [Angelo Ferrando](https://angeloferrando.github.io/website/), [Luca Franceschini](https://www.dibris.unige.it/franceschini-luca), [Viviana Mascardi](https://person.dibris.unige.it/mascardi-viviana). 
 
 # Selected publications 
 
