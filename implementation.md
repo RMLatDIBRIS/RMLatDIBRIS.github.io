@@ -7,7 +7,7 @@ show_downloads: false
 # Implementation
 
 RML [Fra19] compiles down to an operational, low-level formalism, named
-(parametric) trace expressions [AFM16,AFM17,AFFM17]. Trace expressions and their predecessors, global types, have been used to model and verify, among the others (see the [selected publications list](biblio.md)),  multiagent systems [ADM13,BMA15] and IoT systems [ABFM15b,AFDL+17,LAFO+18].
+(parametric) trace expressions [AFM16,AFM17,AFFM17]. Trace expressions and their predecessors, [global types](https://ieeexplore.ieee.org/document/8187184?arnumber=8187184) (behavioral types for verification of interaction protocols), have been used to model and verify, among the others (see the [selected publications list](biblio.md)),  multiagent systems [ADM13,BMA15] and IoT systems [ABFM15b,AFDL+17,LAFO+18].
 
 An optimized implementation of trace expressions has been
 developed in [SWI-Prolog](https://www.swi-prolog.org/), thanks to its native support for
