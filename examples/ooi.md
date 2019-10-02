@@ -78,7 +78,7 @@ Main = ListSafe /\ iterator >> Iterators;
 ListSafe = not_newIter* {let id; newIter(id)(ListSafeIter<id> /\ ListSafe)}?;
 ListSafeIter<id> = list_or_iter(id) >> hasNext_or_next(id)* list* freeIter(id) all;
 
-// iterators specification
+// specification already defined
 Iterators = {let id; newIter(id)(Iterator<id> freeIter(id)|Iterators)}?;
 Iterator<id> = ((hasNext(id,true)+ next(id))* hasNext(id,false)+)!;
 ```
