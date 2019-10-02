@@ -58,7 +58,7 @@ monitor cannot stop verifying the behavior of iterator `id`.
 
 ## Multiple iterators over a single list
 
-To verify multiple iterators, the following additional event type needs to be defined:
+To verify multiple iterators over a single list, the following additional event type needs to be defined:
 * `list`: the list has been structurally modified (its lenght has been changed);
 
 ```js
