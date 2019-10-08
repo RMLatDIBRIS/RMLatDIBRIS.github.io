@@ -84,3 +84,16 @@ Iterator<id> = ((hasNext(id,true)+ next(id))* hasNext(id,false)+)!;
 ```
 The intersection and filter operators allow a compositional definition:
 `Iterators` corresponds to `Main` as defined in [iterators](solution-iters#solution).
+
+
+### Exercise
+Modify [*list_iterators*](#multiple-iterators-over-a-single-list) above to specify multiple iterators over multiple lists (weak version).
+(see the [solution](solution-lists-iters))
+
+*Hint*: assumes that now `list` and `newIter` have the following semantics:
+
+* `list(id)`: list id has been structurally modified (its lenght has been changed);
+* `newIter(lsid,itid)`: a new iterator `itid` has been created for list `lsid`;
+
+Consequently, extends the definition of event type `list_or_iter` and of specifications
+`ListSafe` and `ListSafeIter`.
