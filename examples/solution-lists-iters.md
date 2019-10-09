@@ -25,5 +25,4 @@ ListSafeIter<lsid,itid> = list_or_iter(lsid,itid) >> hasNext_or_next(itid)* list
 // specification already defined
 Iterators = {let id; newIter(id)(Iterator<id> freeIter(id)|Iterators)}?;
 Iterator<id> = ((hasNext(id,true)+ next(id))* hasNext(id,false)+)!;
-
 ```
