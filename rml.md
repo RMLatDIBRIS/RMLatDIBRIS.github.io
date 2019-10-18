@@ -106,10 +106,10 @@ check_der(val1,time1,val2,time2) matches sensor(val2,time2)  // checks derivativ
 ## Basic and derived operators
 An **RML** specification denotes a set of event traces, obtained by combining simpler sets with the following basic binary operators (in
 decreasing order of precedence):
-- concatenation (juxtaposition), to force sequentiality; 
-- intersection (`/\`), to ensure that event traces satisfy simultaneously different properties;  
-- union (`\/`), to express alternatives;
-- shuffle (`|`), to allow interleaving of events in traces. 
+- *concatenation* (juxtaposition) enforces sequentiality; 
+- *intersection* (`/\`) requires simultaneous verification of multiple properties;  
+- *union* (`\/`) expresses alternatives;
+- *shuffle* (`|`)  allows interleaving of events in traces. 
 
 Specifications can be (mutually) recursive, and the keyword `empty` is the basic constant operator
 denoting the set containing just the empty trace.

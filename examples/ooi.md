@@ -14,7 +14,7 @@ The specifications are based on the following event types:
 ```js
 // iterator: single iterator, strong version
 
-// forces best practice:
+// enforces best practice:
 //   hasNext can only be called once per try
 //   hasNext(true) requires next to be called
 //   the iterator must be fully consumed
@@ -38,7 +38,7 @@ To verify multiple iterators, the following additional event type needs to be de
 // iterators: multiple iterators, strong version
 
 // works with traces generated from iterators.js
-// forces best practice: hasNext can only be called once per try, hasNext(id,true) requires next(id) to be called,
+// enforces best practice: hasNext can only be called once per try, hasNext(id,true) requires next(id) to be called,
 // iterators must be fully consumed
 
 Main = {let id; newIter(id)(Iterator<id>|Main)}?;
