@@ -132,7 +132,7 @@ shuffle and intersection are not so widespread, therefore some starting example 
 to explain why they are so useful in **RML** and, more in general, in runtime verification and monitoring,
 to favor conciseness and readability of specifications.
 
-Let us consider the specification of the alternating bit protocol [Yoshida2012](https://link.springer.com/chapter/10.1007%2F978-3-642-28869-2_10) which has to verify the following
+Let us consider the specification of the alternating bit protocol [DeniélouYoshida2012](https://link.springer.com/chapter/10.1007%2F978-3-642-28869-2_10) which has to verify the following
 three properties, where event types `msg(1)`, `msg(2)`, `ack(1)`, and `ack(2)` are assumed to be mutually disjoint:
 1. for any event `e_1` matching `msg(1)` there must be a subsequent event `e_2` matching `ack(1)` and no other
 event matching `msg(1)` is allowed to occur between `e_1` and `e_2`;
