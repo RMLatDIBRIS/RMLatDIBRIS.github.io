@@ -123,77 +123,106 @@ while `(exp)*` and `(exp)+` correspond to the following specifications `Star` an
 Star = empty \/ (exp) Star  // exp*
 Plus = (exp) Star  // exp+
 ```
+Another useful derived operator is the constant `all` which denotes the universe of all traces, and is an abbreviation for
+`any*`.
+
 ### More on intersection and shuffle
-Before introducing other more advanced derived operators, let us focus on the two basic intersection and
-shuffle operators; indeed, while we are all familiar with concatenation and union, which are both used in
-regular expressions and context-free grammars, these latter operators deserve more attention to
-understand why they are useful in **RV**.
+While concatenation and union are familiar operators used in many contexts, including regular expressions and context-free grammars,
+shuffle and intersection are not so widespread, therefore some starting example is needed
+to explain why they are so useful in **RML** and, more in general, in runtime verification and monitoring,
+to favor conciseness and readability of specifications.
 
-For intersection, let us consider the following two simple properties on event traces:
-1. for any event `e_1` matching `open` there must be a subsequent event `e_2` matching `close` and no other
-event matching `open` is allowed to occur between `e_1` and `e_2`;
-2. for any event `e_1` matching `alloc` there must be a subsequent event `e_2` matching `dealloc` and no other
-event matching `alloc` is allowed to occur between `e_1` and `e_2`.
+Let us consider the specification of the alternating bit protocol [Yoshida2012](https://link.springer.com/chapter/10.1007%2F978-3-642-28869-2_10) which has to verify the following
+three properties, where event types `msg(1)`, `msg(2)`, `ack(1)`, and `ack(2)` are assumed to be mutually disjoint:
+1. for any event `e_1` matching `msg(1)` there must be a subsequent event `e_2` matching `ack(1)` and no other
+event matching `msg(1)` is allowed to occur between `e_1` and `e_2`;
+2. for any event `e_1` matching `msg(2)` there must be a subsequent event `e_2` matching `ack(2)` and no other
+event matching `msg(2)` is allowed to occur between `e_1` and `e_2`;
+3. for any event `e_1` matching `msg(1)` there must be a subsequent event `e_2` matching `msg(2)` and no other
+event matching `msg(1)` is allowed to occur between `e_1` and `e_2`.
 
-If `noc` (shorthand for 'not open and close') and `nad` (shorthand for 'not alloc and dealloc') are event types defining all events not matching `open` and `close`, and `alloc` and `dealloc`,
-respectively, then the two properties above can be specified as follows:
+Because of the independence of their event types, the first two properties can be conveniently combined with the shuffle operator: 
 
 ```js
-(noc* (open noc* close)?)*    // property 1
-
-(nad* (alloc nad* dealloc)?)* // property 2
+Prop1_2 = (msg(1)ack(1))* | (msg(2)ack(2))*;
 ```
-Now, what can we do if we need to specify traces that have to verify both properties 1 and 2? The intersection operator
-comes to our aid, by allowing us to combine the two properties above in a compositional way to get the desired
+
+However, the same consideration does not apply to property 3; in this case, intersection is needed to allow a compositional
 specification:
-```js
-(noc* (open noc* close)?)*  /\  (nad* (alloc nad* dealloc)?)* // both property 1 and 2
-```
-
-Property 1 and 2 above have been specified with standard regular expressions; however, it takes some time to parse and
-interpret them correctly. Shuffle allows us to specify such properties in a more direct way:
 
 ```js
-(open close)* | noc*	// property 1
-
-(alloc dealloc)* | nad* // property 2
+no_msg not matches msg(_);
+  
+Prop1_2 = (msg(1)ack(1))* | (msg(2)ack(2))*;
+Prop3 = (msg(1) no_msg* msg(2) no_msg*)*;
+Main = Prop1_2/\Prop3;
 ```
-Shuffle can be used to express concisely that any event trace in `(open close)*` can be interleaved with any trace in `noc*` and
-any event trace in `(alloc dealloc)*` can be interleaved with any trace in `nad*`. Again, if we need both properties to be verified
-by all traces, then we can combine the specifications above with the intersection operator:
+
+Event type `no_msg` matches all events that do not match `msg(_)`, and is needed
+because `Prop3` involves only events of type `msg(1)` or `msg(2)`, while
+`Prop1_2` checks also events of type `ack(1)` or `ack(2)`; indeed,
+the combination `Prop1_2/\(msg(1)msg(2))*` specifies only the empty trace.
+
+The specification of the alternating bit protocol could be equivalently obtained in a non compositional way by defining a state machine
+that is able to monitor the three properties above and that can
+be directly translated into an **RML** specification which, however, would be much less readable.
+
+Property 3 has been specified with a standard regular expression, but the obtained specification
+is not so simple to parse and understand. Thanks again to the independence of the involved event types,
+shuffle allows a more concise and readable specification:
 
 ```js
-((open close)* | noc*) /\ ((alloc dealloc)* | nad*) // property 1 and 2
+no_msg not matches msg(_);
+  
+Prop1_2 = (msg(1)ack(1))* | (msg(2)ack(2))*;
+Prop3 = (msg(1) msg(2))* | no_msg*;
+Main = Prop1_2/\Prop3;
 ```
 
-### Filter operator
-The derived filter operator `>>` is useful for restricting verification to events that match a certain type; for instance, the previous specification
-can be written in a even more readable way:
+This pattern obtained through the combination of the shuffle and
+intersection operators occurs so often when composing specifications of different properties that it justifies the
+introduction of the derived *filter* operator.
+
+### Filter operators
+The specification of property 3 of the [alternating bit protocol](#more-on-intersection-and-shuffle) can be
+further simplified by using a filter operator:
 
 ```js
-(oc >> (open close)*) /\ (ad >> (alloc dealloc)*) // property 1 and 2
+msg matches msg(_);
+
+Prop1_2 = (msg(1)ack(1))* | (msg(2)ack(2))*;
+Prop3 = msg >> (msg(1) msg(2))*;
+Main = Prop1_2/\Prop3;
 ```
 
-Event types `oc`and `ad` are the complement of `noc` and `nad`, respectively:
-an event matches `oc` only when it matches either `open` or `close`,
-an event matches `ad` only when it matches either `alloc` or `dealloc`. The specification
-reads as follows: events matching `oc` have to satisfy `(open close)*`, and events matching
-`ad` have to satisfy `(alloc dealloc)*`.
+The specification `msg >> (msg(1) msg(2))*` denotes the set of all traces verifying
+`(msg(1) msg(2))*` when only all events matching event type
+`msg` are kept; event type `msg` matches all events matching `msg(_)`.
+
+The `>>` operator can be generalized into a conditional filter which takes an
+additional operand: `eventType >> Spec1 : Spec2` denotes the set of all traces verifying
+`Spec1` when only all events matching `eventType` are kept, and
+`Spec2` when only all events not matching `eventType` are kept.
+The less general version `eventType >> Spec` presented above is equivalent to
+`eventType >> Spec : all`.
+
+Conditional filter can be derived from
+the shuffle, intersection and star operators, with the assumption, as it is the case of **RML**, that event types
+are closed w.r.t. negation.
 
 ### Derived operators and monitor verdicts 
 
 Any time it receives a new event, the monitor generated from an **RML** specification emits a verdict in a 4-valued logic:
 - **True**: the event trace monitored so far is correct, and any continuation will be correct as well;  
-- **Possibly True**: the event trace monitored so far is correct, but some of its continuations are not correct; 
-- **Possibly False**: the event trace monitored so far is not correct, but some of its continuations are correct;  
+- **Maybe True**: the event trace monitored so far is correct, but some of its continuations are not correct; 
+- **Maybe False**: the event trace monitored so far is not correct, but some of its continuations are correct;  
 - **False**: the event trace monitored so far is not correct, and any continuation will be incorrect as well.
 
 The first and last values are called *conclusive* since in those cases no other monitoring is required
 to decide whether the **SUS** is correct or not; the others are *inconclusive* and
 require the monitor to keep running.
 
-The derived constant `all`  corresponds to the specification `any*` denoting the set of all possible event traces; such a constant
-is useful to allow monitors to emit **True** as verdict.
+The derived constant `all` is useful to allow monitors to emit **True** as verdict.
 
 Let us consider, for instance, `deq >> (deq(val) all)` which is
 part of the specification for **FIFO** properties as defined at the beginning of this page; according to the filter operator,
