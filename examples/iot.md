@@ -5,5 +5,5 @@ show_downloads: false
 ---
 # Verification of IoT systems
 
-## [Anomaly detection of sensors](sensor.md)
+## [Sensors and anomaly detection](sensor.md)
 
