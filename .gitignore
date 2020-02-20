@@ -3,3 +3,5 @@ Gemfile.lock
 _site
 
 *~
+
+run_server
