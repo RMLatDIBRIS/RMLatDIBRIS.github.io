@@ -43,12 +43,11 @@ CheckDer<val1,time1> = {let val2, time2; check_der(val1,time1,val2,time2) CheckD
 
 ```js
 // anomaly detection of a damped harmonic oscillator with a distance sensor 
-// works with traces generated from oscillator.js
 
 // based on the standard equation
 // pos(time) = amplitude e^(-zeta omega_0 time) sin(omega_1 time + phase)
 // where zeta=c/(2 sqrt(mk)) is the damping ratio,
-//       omega_0=sqrt(k/m) is the undamped angular frequency,
+//      omega_0=sqrt(k/m) is the undamped angular frequency,
 //      k is the spring constant, c is the viscous damping coefficient,
 //      omega_1=sqrt(1 - zeta^2) omega_0 is the angular frequency
 
