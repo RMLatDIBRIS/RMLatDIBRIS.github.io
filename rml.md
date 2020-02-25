@@ -111,6 +111,10 @@ decreasing order of precedence):
 - *union* (`\/`) expresses alternatives;
 - *shuffle* (`|`)  allows interleaving of events in traces. 
 
+Furthermore, the unary postfix operator `!`, with higher precedence on the other operators,
+can be used to consider as valid all prefixes of a set of traces and, thus, change the verdicts emitted
+by monitors (see below).
+
 Specifications can be (mutually) recursive, and the keyword `empty` is the basic constant operator
 denoting the set containing just the empty trace.
 
@@ -126,7 +130,7 @@ Plus = (exp) Star  // exp+
 Another useful derived operator is the constant `all` which denotes the universe of all traces, and is an abbreviation for
 `any*`.
 
-### More on intersection and shuffle
+### Scalable and compositional specifications with shuffle and intersection
 While concatenation and union are familiar operators used in many contexts, including regular expressions and context-free grammars,
 shuffle and intersection are not so widespread, therefore some starting example is needed
 to explain why they are so useful in **RML** and, more in general, in runtime verification and monitoring,
@@ -184,7 +188,7 @@ intersection operators occurs so often when composing specifications of differen
 introduction of the derived *filter* operator.
 
 ### Filter operators
-The specification of property 3 of the [alternating bit protocol](#more-on-intersection-and-shuffle) can be
+The specification of property 3 of the [alternating bit protocol](#scalable-and-compositional-specifications-with-shuffle-and-intersection) can be
 further simplified by using a filter operator:
 
 ```js
@@ -269,7 +273,7 @@ this is an important feature to ensure effectiveness of **RV**.
 
 A very simple form of parametricty can be obtained in **RML** by allowing data value variables in specifications; let us consider again
 the problem of verifying that files are properly opened and closed;
-[property 1](#more-on-intersection-and-shuffle) defined above is oversimplified because it does not take into account an important detail:
+[property 1](#scalable-and-compositional-specifications-with-shuffle-and-intersection) defined above is oversimplified because it does not take into account an important detail:
 an event matching `close` is correctly coupled with a previous event matching `open` only if the two events refer to the same file descriptor `fd`.
 Typically, `fd` is returned by a call to function `open`, and it must be passed as an argument when calling `close`, but the value `fd` will
 be known only at runtime.
