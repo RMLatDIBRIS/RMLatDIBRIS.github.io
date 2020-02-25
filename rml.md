@@ -112,8 +112,8 @@ decreasing order of precedence):
 - *shuffle* (`|`)  allows interleaving of events in traces. 
 
 Furthermore, the unary postfix operator `!`, with higher precedence on the other operators,
-can be used to consider as valid all prefixes of a set of traces and, thus, change the verdicts emitted
-by monitors (see below).
+can be used to consider as valid all prefixes of a set of traces and, thus, change the [verdicts emitted](#monitor-verdicts) 
+by monitors.
 
 Specifications can be (mutually) recursive, and the keyword `empty` is the basic constant operator
 denoting the set containing just the empty trace.
@@ -187,34 +187,7 @@ This pattern obtained through the combination of the shuffle and
 intersection operators occurs so often when composing specifications of different properties that it justifies the
 introduction of the derived *filter* operator.
 
-### Filter operators
-The specification of property 3 of the [alternating bit protocol](#scalable-and-compositional-specifications-with-shuffle-and-intersection) can be
-further simplified by using a filter operator:
-
-```js
-msg matches msg(_);
-
-Prop1_2 = (msg(1)ack(1))* | (msg(2)ack(2))*;
-Prop3 = msg >> (msg(1) msg(2))*;
-Main = Prop1_2/\Prop3;
-```
-
-The specification `msg >> (msg(1) msg(2))*` denotes the set of all traces verifying
-`(msg(1) msg(2))*` when only all events matching event type
-`msg` are kept; event type `msg` matches all events matching `msg(_)`.
-
-The `>>` operator can be generalized into a conditional filter which takes an
-additional operand: `eventType >> Spec1 : Spec2` denotes the set of all traces verifying
-`Spec1` when only all events matching `eventType` are kept, and
-`Spec2` when only all events not matching `eventType` are kept.
-The less general version `eventType >> Spec` presented above is equivalent to
-`eventType >> Spec : all`.
-
-Conditional filter can be derived from
-the shuffle, intersection and star operators, with the assumption, as it is the case of **RML**, that event types
-are closed w.r.t. negation.
-
-### Derived operators and monitor verdicts 
+### Monitor verdicts 
 
 Any time it receives a new event, the monitor generated from an **RML** specification emits a verdict in a 4-valued logic:
 - **True**: the event trace monitored so far is correct, and any continuation will be correct as well;  
@@ -235,7 +208,7 @@ traces restricted to events matching type `deq` must verify `deq(val) all`, that
 the **True** verdict. Therefore, the specification `deq >> (deq(val) all)` defines the following constraint: the first dequeue operation, if any, must return
 `val` as value.
 
-Another useful operator for driving monitor verdicts is the **prefix closure operator** `!`; let us consider again the specification for
+A very useful operator for driving monitor verdicts is the **prefix closure operator** `!`; let us consider again the specification for
 **FIFO** queues:
 ```js
 // FIFO queues
@@ -265,6 +238,33 @@ let us recall the meaning of the **True** verdict: the event trace monitored so 
 Can this happen when monitoring a program which manipulates a queue? Not really! The best we can get is
 **Possibly True**: the event trace monitored so far is correct, but some of its continuations are not correct; indeed, at each time
 an event corresponding to dequeueing an incorrect value could occur.
+
+### Filter operators
+The specification of property 3 of the [alternating bit protocol](#scalable-and-compositional-specifications-with-shuffle-and-intersection) can be
+further simplified by using a filter operator:
+
+```js
+msg matches msg(_);
+
+Prop1_2 = (msg(1)ack(1))* | (msg(2)ack(2))*;
+Prop3 = msg >> (msg(1) msg(2))*;
+Main = Prop1_2/\Prop3;
+```
+
+The specification `msg >> (msg(1) msg(2))*` denotes the set of all traces verifying
+`(msg(1) msg(2))*` when only all events matching event type
+`msg` are kept; event type `msg` matches all events matching `msg(_)`.
+
+The `>>` operator can be generalized into a conditional filter which takes an
+additional operand: `eventType >> Spec1 : Spec2` denotes the set of all traces verifying
+`Spec1` when only all events matching `eventType` are kept, and
+`Spec2` when only all events not matching `eventType` are kept.
+The less general version `eventType >> Spec` presented above is equivalent to
+`eventType >> Spec : all`.
+
+Conditional filter can be derived from
+the shuffle, intersection and star operators, with the assumption, as it is the case of **RML**, that event types
+are closed w.r.t. negation.
 
 ## Parametric specifications
 
