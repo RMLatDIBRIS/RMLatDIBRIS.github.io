@@ -20,6 +20,7 @@ several kinds of properties in different domains.
 
 ## [Robotic systems](/examples/ros.md)
 
+## [Regular expressions](/examples/regexp.md)
 
 
  
