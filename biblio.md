@@ -10,6 +10,11 @@ The main contributors of **RML** are [Davide Ancona](https://person.dibris.unige
 
 # Selected publications 
 
+## 2020
+
+*[Fra20]* Franceschini L. (2020) RML: Runtime Monitoring Language.  Ph.D. thesis,
+DIBRIS - University of Genova [URL](http://hdl.handle.net/11567/1001856)
+
 ## 2019 
 
 *[Fer19]* Ferrando A. (2019) The early bird catches the worm: First verify, then monitor! Sci. Comput. Program. 172: 160-179 [Bibtex from DBLP](https://dblp.uni-trier.de/rec/bibtex/journals/scp/Ferrando19)
