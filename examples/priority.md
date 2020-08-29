@@ -5,7 +5,7 @@ show_downloads: false
 ---
 # Verification of priority queues
 
-The specifications are based on the following event types:
+The specifications are based on the following basic event types:
 * `enq(val)`: value `val` has been inserted in the queue;
 * `deq(val)`: value `val` has been removed from the queue;
 * `peek(val)`: value `val` is retrieved but not removed from the head of the queue.

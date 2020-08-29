@@ -9,7 +9,7 @@ Stacks are a quite common data type, and system correctness may often depends on
 for instance, absence of data races in multi-threaded programs can be guaranteed by nested locks, whose implementation follows
 the LIFO strategy.
 
-The specifications are based on the following event types:
+The specifications are based on the following basic event types:
 * `push(val)`: value `val` has been pushed on the stack;
 * `pop(val)`: value `val` has been popped from the stack;
 * `size(s)`: `s` has been computed as the size of the stack.	
@@ -93,7 +93,7 @@ not_size not matches size(_);
 Despite its verbosity, this pattern favors extension of the specification (see the [exercise below](#exercise-1)). 
 
 ### Exercise
-Extend the 'by decomposition' version of [specification *stack2*](#approach-by-decomposition) to verify also the top operation with the corresponding event type: (see the [solution](solution-stack2.md))
+Extend the 'by decomposition' version of [specification *stack2*](#approach-by-decomposition) to verify also the top operation with the corresponding basic event type: (see the [solution](solution-stack2.md))
 
 * `top(val)`: value `val` has been computed as the top of the stack.
 
