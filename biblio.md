@@ -3,6 +3,9 @@ layout: default
 title: Selected publications
 show_downloads: false
 ---
+
+**RML** has been developed and is currently maintained by [DIBRIS](https://www.dibris.unige.it/en/)  -  [University of Genoa](https://unige.it/en), Italy
+
 The design and development of **RML** is based on several research contributions on trace calculi for RV based on *trace expressions* and initially
 inspired to global types.
 
@@ -12,10 +15,17 @@ The main contributors of **RML** are [Davide Ancona](https://person.dibris.unige
 
 ## 2020
 
+*[AFM20]* Ancona D., Ferrando A., Mascardi V. (2020) Can determinism and compositionality coexist in RML? In Proceedings of Combined 27th International Workshop on Expressiveness in Concurrency and 17th Workshop on Structural Operational Semantics, 13-32 [Bibtex from DBLP](https://dblp.org/rec/journals/corr/abs-2009-00391.html?view=bibtex)
+
+*[FCFA+20]* Ferrando A., Cardoso R. C., Fisher M., Ancona D., Franceschini L., Mascardi V. (2020)
+ROSMonitoring: A Runtime Verification Framework for ROS. In Proceedings of Towards Autonomous Robotic Systems - 21st Annual Conference (TAROS 2020), 387-399 [Bibtex from DBLP](https://dblp.org/rec/conf/taros/FerrandoC0AFM20.html?view=bibtex)
+
 *[Fra20]* Franceschini L. (2020) RML: Runtime Monitoring Language.  Ph.D. thesis,
 DIBRIS - University of Genova [URL](http://hdl.handle.net/11567/1001856)
 
 ## 2019 
+
+*[AFFM19]* Ancona D., Franceschini L., Ferrando A., Mascardi V. (2019) A Deterministic Event Calculus for Effective Runtime Verification. In Proceedings of the 20th Italian Conference on Theoretical Computer Science (ICTCS 2019), 248-260 [Bibtex from DBLP](https://dblp.org/rec/conf/ictcs/AnconaFFM19.html?view=bibtex)
 
 *[Fer19]* Ferrando A. (2019) The early bird catches the worm: First verify, then monitor! Sci. Comput. Program. 172: 160-179 [Bibtex from DBLP](https://dblp.uni-trier.de/rec/bibtex/journals/scp/Ferrando19)
 

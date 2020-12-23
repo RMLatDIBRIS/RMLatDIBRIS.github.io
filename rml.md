@@ -9,7 +9,7 @@ show_downloads: false
 which decouples monitoring from instrumentation by allowing users to write specifications and
 to synthesize monitors from them, independently of the **System Under Scrutiny** (**SUS**) and its instrumentation. 
 
-**RML** is more expressive than **Context-Free** grammars, for instance the following specification allows
+**RML** can monitor **non-context-free** properties, for instance the following specification allows
 monitoring of [**FIFO** properties](examples/fifo):
 
 ```js
