@@ -13,6 +13,11 @@ The main contributors of **RML** are [Davide Ancona](https://person.dibris.unige
 
 # Selected publications 
 
+## 2021
+*[AFFM21]* Ancona D., Franceschini L., Ferrando A., Mascardi V. (2021) RML: Theory and practice of a domain specific language for runtime verification.
+Science of Computer Programming, Volume 205, 102610, ISSN 0167-6423 [URL](https://authors.elsevier.com/a/1cP%7ELc7X4-XPY)
+
+
 ## 2020
 
 *[AFM20]* Ancona D., Ferrando A., Mascardi V. (2020) Can determinism and compositionality coexist in RML? In Proceedings of Combined 27th International Workshop on Expressiveness in Concurrency and 17th Workshop on Structural Operational Semantics, 13-32 [Bibtex from DBLP](https://dblp.org/rec/journals/corr/abs-2009-00391.html?view=bibtex)
