@@ -15,7 +15,7 @@ The main contributors of **RML** are [Davide Ancona](https://person.dibris.unige
 
 ## 2021
 *[AFFM21]* Ancona D., Franceschini L., Ferrando A., Mascardi V. (2021) RML: Theory and practice of a domain specific language for runtime verification.
-Science of Computer Programming, Volume 205, 102610, ISSN 0167-6423 [URL](https://authors.elsevier.com/a/1cP%7ELc7X4-XPY)
+Science of Computer Programming, Volume 205, 102610, ISSN 0167-6423 [URL](https://www.sciencedirect.com/science/article/pii/S0167642321000034)
 
 
 ## 2020
