@@ -16,7 +16,7 @@ This is a typical control-oriented verification problem that can be managed with
 The following specification provides a pattern that can be easily adapted when resources can be accessed
 in a non-exclusive way:
 
-```rml
+```js
 // non-exclusive1
 Main = {let rid; acquire(rid) (Main | use(rid)* release(rid))}?;
 ```
