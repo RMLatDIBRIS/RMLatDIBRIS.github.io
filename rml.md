@@ -12,7 +12,7 @@ to synthesize monitors from them, independently of the **System Under Scrutiny**
 **RML** can monitor **non-context-free** properties, for instance the following specification allows
 monitoring of [**FIFO** properties](examples/fifo):
 
-```rml
+```js
 // FIFO queues
 
 enq(val) matches {event:'func_pre',name:'enqueue',args:[val]};
