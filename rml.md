@@ -38,7 +38,7 @@ to *function calls* and *returns from functions*, respectively;
 
 As an example, the following objects
 
-```js
+```rml
 {event:'func_pre',name:'enqueue',args:[val]}
 
 {event:'func_post',name:'dequeue',args:[],res:val}
