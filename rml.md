@@ -52,7 +52,7 @@ specify the following events, respectively:
 Event types define  sets of events and coincide with what is often referred as symbolic events in the **RV** jargon.
 In **RML**  event types are terms built on top of names, associated with arities, and subterms representing data values of primitive, array, or object type;
 the simplest way to define event types is by pattern matching, as in the following example:
-```js
+```rml
 enq(val) matches {event:'func_pre',name:'enqueue',args:[val]};
 deq(val) matches {event:'func_post',name:'dequeue',res:val};
 ```  
