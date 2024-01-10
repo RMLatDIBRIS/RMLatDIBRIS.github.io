@@ -16,7 +16,9 @@ monitoring of [**FIFO** properties](examples/fifo):
 // FIFO queues
 
 enq(val) matches {event:'func_pre',name:'enqueue',args:[val]};
+
 deq(val) matches {event:'func_post',name:'dequeue',res:val};
+
 deq matches deq(_);
 
 Main = {let val; enq(val) ((deq | Main) /\ (deq >> (deq(val) all)))}!;
