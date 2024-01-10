@@ -3,7 +3,7 @@ layout: default
 title: RML home
 show_downloads: false
 ---
-# Welcome to the Web site of RML!!
+# Welcome to the Web site of RML!
 
 * * *
 
