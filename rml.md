@@ -80,7 +80,7 @@ Event types favor modular and reusable specifications and enhance readability;
 for instance, the specification of queues above can be easily adapted if one has to verify a library where the operations for enqueueing and dequeing
 use different names, by only changing the definitions of `enq(val)` and `deq(val)`:
 
-```js
+```rml
 enq(val) matches {event:'func_pre',name:'add',args:[val]};
 deq(val) matches {event:'func_post',name:'remove',res:val};
 ```  
