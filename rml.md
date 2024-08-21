@@ -12,7 +12,7 @@ to synthesize monitors from them, independently of the **System Under Scrutiny**
 **RML** can monitor **non-context-free** properties, for instance the following specification allows
 monitoring of [**FIFO** properties](examples/fifo):
 
-```rml
+```js
 // FIFO queues
 
 enq(val) matches {event:'func_pre',name:'enqueue',args:[val]};
@@ -38,7 +38,7 @@ to *function calls* and *returns from functions*, respectively;
 
 As an example, the following objects
 
-```rml
+```js
 {event:'func_pre',name:'enqueue',args:[val]}
 
 {event:'func_post',name:'dequeue',args:[],res:val}
@@ -52,7 +52,7 @@ specify the following events, respectively:
 Event types define  sets of events and coincide with what is often referred as symbolic events in the **RV** jargon.
 In **RML**  event types are terms built on top of names, associated with arities, and subterms representing data values of primitive, array, or object type;
 the simplest way to define event types is by pattern matching, as in the following example:
-```rml
+```js
 enq(val) matches {event:'func_pre',name:'enqueue',args:[val]};
 deq(val) matches {event:'func_post',name:'dequeue',res:val};
 ```  
@@ -80,7 +80,7 @@ Event types favor modular and reusable specifications and enhance readability;
 for instance, the specification of queues above can be easily adapted if one has to verify a library where the operations for enqueueing and dequeing
 use different names, by only changing the definitions of `enq(val)` and `deq(val)`:
 
-```rml
+```js
 enq(val) matches {event:'func_pre',name:'add',args:[val]};
 deq(val) matches {event:'func_post',name:'remove',res:val};
 ```  
